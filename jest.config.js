@@ -5,4 +5,8 @@ module.exports = {
   transform: {
     "^.+\\.(js|jsx|ts|tsx)$": ["babel-jest", { presets: ["next/babel"] }],
   },
+  moduleNameMapper: {
+    "\\.(css|scss|less|jpg|png|svg)$": "identity-obj-proxy",
+    "@/(.*)": "<rootDir>/src/$1",
+  },
 };
