@@ -1,3 +1,4 @@
+import { Header } from "@/components/Header";
 import "./globals.css";
 import { DM_Sans } from "next/font/google";
 
@@ -19,7 +20,10 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en">
-      <body className={dmSans.className}>{children}</body>
+      <body className={dmSans.className}>
+        <Header />
+        {children}
+      </body>
     </html>
   );
 }

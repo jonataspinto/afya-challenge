@@ -1,0 +1,31 @@
+name: Unit & Integration
+concurrency:
+  group: ${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: true
+
+on: [pull_request]
+
+jobs:
+  unit-integration:
+    name: Unit & Integration
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+
+      - name: Checkout
+        uses: actions/checkout@v3
+
+      - name: Use Node.js ${{ matrix.node-version }}
+        uses: actions/setup-node@v3
+        with:
+          node-version: '18.x'
+          cache: 'npm'
+
+      - name: Install Packages
+        run: npm ci --legacy-peer-deps
+
+      - name: Test Clear
+        run: npm run test:clear
+      
+      - name: Test Coverage
+        run: npm run test:coverage
