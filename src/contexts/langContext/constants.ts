@@ -45,4 +45,14 @@ export const ptBR = {
       label: 'finalizar pagamento',
     },
   },
+  checkoutPage: {
+    paymentDataSection: {
+      heading: 'Estamos quase lá!',
+      description: 'Insira seus dados de pagamento abaixo:',
+    },
+    plansSection: {
+      heading: 'Confira o seu plano:',
+      info: 'Sobre a cobrança',
+    },
+  },
 };
