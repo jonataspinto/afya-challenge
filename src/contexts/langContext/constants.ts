@@ -40,5 +40,9 @@ export const ptBR = {
       label: 'número de parcelas',
       placeholder: 'selecione',
     },
+    submitButton: {
+      id: 'paymentFormSubmitButton',
+      label: 'finalizar pagamento',
+    },
   },
 };
