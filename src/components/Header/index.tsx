@@ -12,7 +12,7 @@ export const Header = () => {
         className={styles.goBackButton}
         aria-label={lang.goToBackButtonLabel}
       >
-        <ChevronLeft />
+        <ChevronLeft ariaLabel={`${lang.goToBackButtonLabel}: icon`} />
       </button>
       <Logo ariaLabel={lang.logoAltText} />
     </header>
