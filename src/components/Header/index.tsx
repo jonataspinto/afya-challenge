@@ -1,3 +1,4 @@
+'use client';
 import { Logo } from '@/components/icons/Logo';
 import { ChevronLeft } from '@/components/icons/ChevronLeft';
 import { useLang } from '@/contexts/langContext';

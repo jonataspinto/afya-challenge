@@ -1,7 +1,8 @@
 :root {
   --primary-theme-color: #191847;
   --secondary-theme-color: #f5850b;
-  --bg-color-container: #e5e5e5;
+  --bg-color-container: #fff;
+  --white: #fff;
   --black: #151516;
   --gray-1: #F4F3F6;
   --gray-2: #E1DEE8;
