@@ -1,0 +1,79 @@
+.container {
+  display: grid;
+  grid-template-columns: 16.5rem 16.5rem;
+  grid-template-areas:
+    'cardNumberField cardNumberField'
+    'cardValidDateField cardCvvField'
+    'cardUserNameField cardUserNameField'
+    'cardUserCpfField cardUserCpfField'
+    'couponField couponField'
+    'submitButton submitButton';
+  max-width: 33rem;
+  column-gap: 5rem;
+  row-gap: 3rem;
+  font-size: var(--body-font-size);
+}
+
+.formField {
+  display: flex;
+  flex-direction: column;
+  gap: 0.4rem;
+
+  label {
+    font-size: var(--note-font-size);
+    font-weight: 400;
+    text-transform: capitalize;
+    color: var(--gray-4);
+    cursor: pointer;
+  }
+
+  input {
+    border: none;
+    background: transparent;
+    color: var(--black);
+    &::placeholder {
+      color: var(--gray-3);
+    }
+    &:focus,
+    &.focused {
+      outline: none;
+    }
+  }
+
+  border-bottom: solid 0.1rem var(--gray-1);
+}
+
+.cardNumberField {
+  grid-area: cardNumberField;
+}
+
+.cardValidDateField {
+  grid-area: cardValidDateField;
+}
+
+.cardCvvField {
+  grid-area: cardCvvField;
+  label {
+    text-transform: uppercase;
+  }
+}
+
+.cardUserNameField {
+  grid-area: cardUserNameField;
+}
+
+.cardUserCpfField {
+  grid-area: cardUserCpfField;
+  label {
+    text-transform: uppercase;
+  }
+}
+
+.couponField {
+  grid-area: couponField;
+}
+
+.submitButton {
+  grid-area: submitButton;
+  width: 100%;
+}

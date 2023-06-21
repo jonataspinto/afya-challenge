@@ -1,0 +1,23 @@
+.container {
+  background-color: var(--primary-theme-color);
+  color: var(--white);
+  font-size: var(--body-font-size-2);
+  font-weight: 400;
+  padding: 1.8rem 6rem;
+  border-style: none;
+  border: none;
+  display: flex;
+  justify-content: center;
+  transition: background-color 0.2s ease;
+  cursor: pointer;
+  text-transform: capitalize;
+  border-radius: 2.5rem;
+  &:hover {
+    color: var(--gray-2);
+  }
+
+  &:disabled , :hover {
+    background-color: var(--gray-2);
+    color: var(--gray-4);
+  }
+}
