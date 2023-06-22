@@ -53,7 +53,7 @@ export const ptBR = {
   checkoutPage: {
     seo: {
       title: 'Checkout',
-      description: "selecione um dos planos disponíveis e efetue o pagamento."
+      description: 'selecione um dos planos disponíveis e efetue o pagamento.',
     },
     paymentDataSection: {
       heading: 'Estamos quase lá!',
@@ -63,5 +63,20 @@ export const ptBR = {
       heading: 'Confira o seu plano:',
       info: 'Sobre a cobrança',
     },
+  },
+  confirmationPage: {
+    seo: {
+      title: 'Compra realizada com sucesso',
+      description:
+        'Tudo certo! Sua assinatura foi realizada com sucesso, aproveite seu plano.',
+    },
+    heading: 'Parabéns!',
+    description: 'Sua assinatura foi realizada com sucesso.',
+    manageSubscription: {
+      id: 'manageSubscription',
+      label: 'gerenciar assinatura',
+      path: '/',
+    },
+    goToHome: { id: 'goToHome', label: 'ir para a home', path: '/' },
   },
 };
