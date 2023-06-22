@@ -1,0 +1,59 @@
+.container {
+  background-color: var(--bg-color-container);
+  display: flex;
+  justify-content: space-between;
+  gap: 6rem;
+  height: 100%;
+  padding: 7.2rem 24.8rem 0;
+  max-width: 136.6rem;
+  margin: 0 auto;
+
+  @media (max-width: 1280px) {
+    padding: 7.2rem 16rem 0;
+  }
+
+  @media (max-width: 992px) {
+    justify-content: space-between;
+    padding-top: 3.2rem;
+    flex-direction: column-reverse;
+    align-items: center;
+    padding: 2.4rem 1.5rem;
+  }
+}
+
+.paymentDataSection {
+  color: var(--black);
+  font-weight: 400;
+  max-width: 33rem;
+  width: 100%;
+
+  &_heading {
+    font-size: var(--heading-size-4);
+    margin-bottom: 0.9rem;
+  }
+
+  &_description {
+    font-size: var(--body-font-size);
+    margin-bottom: 3rem;
+  }
+}
+
+.plansSection {
+  color: var(--black);
+  font-weight: 400;
+  max-width: 33rem;
+  width: 100%;
+
+  &_tag {
+    margin-bottom: 3rem;
+  }
+
+  &_heading {
+    font-size: var(--heading-size-4);
+    margin-bottom: 0.9rem;
+  }
+
+  &_info {
+    margin-top: 3rem;
+  }
+}
