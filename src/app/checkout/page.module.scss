@@ -24,7 +24,7 @@
 .paymentDataSection {
   color: var(--black);
   font-weight: 400;
-  max-width: 33rem;
+  max-width: 34rem;
   width: 100%;
   display: flex;
   flex-direction: column;
@@ -43,8 +43,11 @@
 .plansSection {
   color: var(--black);
   font-weight: 400;
-  max-width: 33rem;
+  max-width: 35rem;
   width: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: 3rem;
 
   &_tag {
     margin-bottom: 3rem;
@@ -53,9 +56,5 @@
   &_heading {
     font-size: var(--heading-size-4);
     margin-bottom: 0.9rem;
-  }
-
-  &_info {
-    margin-top: 3rem;
   }
 }
