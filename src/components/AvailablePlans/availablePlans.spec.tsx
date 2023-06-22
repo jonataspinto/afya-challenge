@@ -9,6 +9,9 @@ const plansMock = [
     description: 'À Vista',
     order: 2,
     discountPercentage: 0.1,
+    fullPrice: 600,
+    discountAmmount: 60,
+    installments: 12,
   },
   {
     id: 2,
@@ -16,6 +19,9 @@ const plansMock = [
     description: 'parcelado',
     order: 1,
     discountPercentage: 0.1,
+    fullPrice: 300,
+    discountAmmount: 20,
+    installments: 1,
   },
 ];
 
@@ -40,7 +46,9 @@ describe('AvailablePlans', () => {
         screen.getByTestId(new RegExp(discountTagId, 'i')),
       ).toHaveTextContent(String(discountValue));
 
-      expect(screen.getByRole('radio', { name: String(planData.id) })).toBeInTheDocument();
+      expect(
+        screen.getByRole('radio', { name: String(planData.id) }),
+      ).toBeInTheDocument();
     });
   });
 
