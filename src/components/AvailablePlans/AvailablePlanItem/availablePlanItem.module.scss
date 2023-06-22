@@ -1,0 +1,62 @@
+.container {
+  border-radius: 1.5rem;
+  border: 1px solid var(--primary-theme-color);
+  padding: 2rem;
+  display: flex;
+  justify-content: space-between;
+  gap: 5.7rem;
+
+  @media (max-width: 992px) {
+    padding: 2rem 1.2rem;
+  }
+
+  input[type='radio'] {
+    accent-color: var(--bg-color-container);
+    cursor: pointer;
+  }
+
+  input[type='radio']:checked {
+    accent-color: var(--primary-theme-color);
+  }
+}
+
+.planDetails {
+  font-weight: 400;
+  color: var(--primary-theme-color);
+  display: flex;
+  gap: 1.2rem;
+  align-items: center;
+  cursor: pointer;
+
+  &group {
+    display: flex;
+    flex-direction: column;
+    gap: 0.4rem;
+  }
+
+  &_title {
+    font-weight: 700;
+    font-size: var(--body-font-size-2);
+    color: var(--primary-theme-color);
+    line-height: 1.823rem;
+    white-space: nowrap;
+  }
+
+  &_condition {
+    font-size: var(--note-font-size);
+    white-space: nowrap;
+  }
+
+  &_installment {
+    font-size: 1rem;
+    color: var(--secondary-theme-color);
+  }
+
+  &_discountBadge {
+    background-color: var(--secondary-theme-color);
+    color: var(--white);
+    padding: 0.4rem 0.9rem;
+    border-radius: 0.9rem;
+    height: max-content;
+  }
+}

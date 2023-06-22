@@ -1,4 +1,6 @@
 import { HtmlHTMLAttributes } from 'react';
+import { AvailablePlanItem } from './AvailablePlanItem';
+import styles from './availablePlans.module.scss';
 
 type PlanDTO = {
   id: string | number;
@@ -6,6 +8,9 @@ type PlanDTO = {
   description: string;
   order: number;
   discountPercentage: number;
+  fullPrice: number;
+  discountAmmount: number;
+  installments: number;
 };
 
 interface AvailablePlansProps extends HtmlHTMLAttributes<HTMLUListElement> {
@@ -14,12 +19,16 @@ interface AvailablePlansProps extends HtmlHTMLAttributes<HTMLUListElement> {
 
 export const AvailablePlans = ({
   plans,
+  className,
   ...restProps
 }: AvailablePlansProps) => {
   return (
-    <ul {...restProps}>
+    <ul
+      {...restProps}
+      className={`${styles.container} ${className ? className : ''}`}
+    >
       {plans?.map((planData) => (
-        <li key={planData.id}>{planData.title}</li>
+        <AvailablePlanItem key={planData.id} planData={planData} />
       ))}
     </ul>
   );
