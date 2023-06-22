@@ -32,7 +32,7 @@ export const CreditCards = ({
           <li
             key={key}
             title={key}
-            className={key === selectedCard ? 'isSelected' : ''}
+            className={key === selectedCard ? `isSelected ${styles.isSelectedCard}` : ''}
           >
             <Component />
           </li>

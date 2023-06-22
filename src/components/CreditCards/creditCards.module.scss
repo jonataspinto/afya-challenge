@@ -9,6 +9,9 @@
   display: flex;
   gap: 1.311rem;
   list-style: none;
+  li {
+    transition: transform 0.2s;
+  }
 }
 
 .paymentProvider {
@@ -19,4 +22,9 @@
   color: var(--gray-2);
   font-size: 1rem;
   font-weight: 400;
+}
+
+.isSelectedCard {
+  transition: transform 0.2s;
+  transform: scale(1.7);
 }
