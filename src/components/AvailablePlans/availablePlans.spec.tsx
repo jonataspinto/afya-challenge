@@ -1,37 +1,16 @@
 import userEvent from '@testing-library/user-event';
 import { fireEvent, render, screen } from '@testing-library/react';
+import { availablePlansMock } from '@/mock/availablePlans';
 import { AvailablePlans } from '.';
 
-const plansMock = [
-  {
-    id: 1,
-    title: 'premium Anual',
-    description: 'À Vista',
-    order: 2,
-    discountPercentage: 0.1,
-    fullPrice: 600,
-    discountAmmount: 60,
-    installments: 12,
-  },
-  {
-    id: 2,
-    title: 'premium Anual',
-    description: 'parcelado',
-    order: 1,
-    discountPercentage: 0.1,
-    fullPrice: 300,
-    discountAmmount: 20,
-    installments: 1,
-  },
-];
 
 describe('AvailablePlans', () => {
   it('should render a list with available plans', async () => {
-    render(<AvailablePlans plans={plansMock} />);
+    render(<AvailablePlans plans={availablePlansMock} />);
 
     expect(screen.getByRole('list')).toBeInTheDocument();
 
-    plansMock.forEach((planData) => {
+    availablePlansMock.forEach((planData) => {
       const nameToQuery = ` ${planData.title} | ${planData.description}`;
       const discountTagId = `discount plan #ID ${planData.id}`;
       const discountValue = `${planData.discountPercentage * 100}%`;
@@ -53,9 +32,9 @@ describe('AvailablePlans', () => {
   });
 
   it('should highlight the selected plan', async () => {
-    render(<AvailablePlans plans={plansMock} />);
+    render(<AvailablePlans plans={availablePlansMock} />);
 
-    const plan = screen.getByRole('radio', { name: String(plansMock[0].id) });
+    const plan = screen.getByRole('radio', { name: String(availablePlansMock[0].id) });
 
     await fireEvent.click(plan);
 
