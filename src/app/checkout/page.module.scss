@@ -26,6 +26,9 @@
   font-weight: 400;
   max-width: 33rem;
   width: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: 3rem;
 
   &_heading {
     font-size: var(--heading-size-4);
@@ -34,7 +37,6 @@
 
   &_description {
     font-size: var(--body-font-size);
-    margin-bottom: 3rem;
   }
 }
 
