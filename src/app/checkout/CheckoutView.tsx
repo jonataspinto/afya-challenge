@@ -3,6 +3,8 @@ import { useLang } from '@/contexts/langContext';
 import { PaymentForm } from '@/components/PaymentForm';
 import { EmailTag } from '@/components/EmailTag';
 import { Tooltip } from '@/components/Tooltip';
+import { CreditCards } from '@/components/CreditCards';
+
 import styles from './page.module.scss';
 
 export const CheckoutView = () => {
@@ -13,12 +15,15 @@ export const CheckoutView = () => {
   return (
     <>
       <section className={styles.paymentDataSection}>
-        <h2 className={styles.paymentDataSection_heading}>
-          {checkoutPage.paymentDataSection.heading}
-        </h2>
-        <p className={styles.paymentDataSection_description}>
-          {checkoutPage.paymentDataSection.description}
-        </p>
+        <div>
+          <h2 className={styles.paymentDataSection_heading}>
+            {checkoutPage.paymentDataSection.heading}
+          </h2>
+          <p className={styles.paymentDataSection_description}>
+            {checkoutPage.paymentDataSection.description}
+          </p>
+        </div>
+        <CreditCards />
         <PaymentForm onSubmit={() => {}} />
       </section>
 
