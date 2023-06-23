@@ -13,11 +13,12 @@
   text-transform: capitalize;
   border-radius: 2.5rem;
   &:hover {
-    color: var(--gray-2);
+    color: var(--gray-3);
   }
 
-  &:disabled , :hover {
+  &:disabled {
     background-color: var(--gray-2);
     color: var(--gray-4);
+    cursor: not-allowed;
   }
 }
