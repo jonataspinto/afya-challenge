@@ -32,4 +32,21 @@ describe('PurchaseData', () => {
 
     expect(screen.getByText(formatCpf(userDataMock.cpf))).toBeInTheDocument();
   });
+
+  it('not should render component if purchase.id is not found', () => {
+    render(
+      <LangProvider>
+        <PurchaseData
+          purchase={{ ...purchaseDataMock, offerId: 230 }}
+          userData={userDataMock}
+        />
+      </LangProvider>,
+    );
+
+    expect(
+      screen.queryByRole('heading', {
+        name: new RegExp(formatPlanTitle(contractedPlan), 'i'),
+      }),
+    ).not.toBeInTheDocument();
+  });
 });
