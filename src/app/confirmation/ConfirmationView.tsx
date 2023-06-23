@@ -1,10 +1,13 @@
 'use client';
+import Link from 'next/link';
 import { useLang } from '@/contexts/langContext';
 import { CheckIcon } from '@/components/icons/CheckIcon';
+import { Button } from '@/components/Button';
+import { PurchaseData } from '@/components/PurchaseData';
+import { purchaseDataMock } from '@/mock/purchase';
+import { userDataMock } from '@/mock/userData';
 
 import styles from './page.module.scss';
-import Link from 'next/link';
-import { Button } from '@/components/Button';
 
 export const ConfirmationView = () => {
   const {
@@ -22,6 +25,8 @@ export const ConfirmationView = () => {
           {confirmationPage.description}
         </p>
       </div>
+
+      <PurchaseData purchase={purchaseDataMock} userData={userDataMock} />
 
       <footer className={styles.actions}>
         <Link
