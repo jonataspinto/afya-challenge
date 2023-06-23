@@ -39,8 +39,7 @@ describe('PaymentForm', () => {
       name: new RegExp(ptBR.paymentForm.submitButton.label),
     });
 
-    // TODO: test this case when implement react-hook-form
-    expect(submitButton).not.toBeDisabled();
+    expect(submitButton).toBeDisabled();
 
     const cardNumberField = screen.getByRole('textbox', {
       name: new RegExp(ptBR.paymentForm.cardNumberField.label, 'i'),
@@ -77,7 +76,9 @@ describe('PaymentForm', () => {
       expect(submitButton).not.toBeDisabled();
     });
 
-    await fireEvent.click(submitButton);
+    await waitFor(async () => {
+      await fireEvent.click(submitButton);
+    });
 
     expect(handleSubmitMock).toBeCalled();
   });
