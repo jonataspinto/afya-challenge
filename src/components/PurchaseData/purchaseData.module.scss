@@ -1,0 +1,86 @@
+.container {
+  padding: 1.6rem 1.5rem 2.4rem;
+  box-shadow: 0px 4px 20px 0px #0000000d;
+  border-radius: 1.5rem;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: 1.9rem;
+
+  @media (max-width: 992px) {
+    padding: 1.2rem;
+  }
+}
+
+.contractedPlan {
+  display: flex;
+  justify-content: space-between;
+  border-radius: 1.5rem;
+  background-color: var(--gray-1);
+  padding: 1.6rem 2rem;
+  color: var(--primary-theme-color);
+  font-weight: 400;
+
+  @media (max-width: 992px) {
+    padding: 0.8rem;
+  }
+
+  &_starIcon {
+    padding: 1.2rem;
+    background-color: var(--gray-2);
+    border-radius: 50%;
+  }
+
+  &_title {
+    line-height: 2.035rem;
+    font-size: var(--body-font-size);
+    text-align: right;
+    width: 100%;
+  }
+
+  &_condition {
+    line-height: 1.781rem;
+    font-size: var(--body-font-size-2);
+    text-align: right;
+    display: block;
+  }
+}
+
+.userData {
+  display: grid;
+  grid-template-columns: auto auto;
+  grid-template-areas:
+    'userEmailLabel userEmail'
+    'userCpfLabel userCpf';
+  row-gap: 2.6rem;
+
+  &_label {
+    font-size: var(--body-font-size-2);
+    line-height: 1.781rem;
+    color: var(--gray-3);
+  }
+
+  &_emailLabel {
+    grid-area: userEmailLabel;
+  }
+
+  &__cpfLabel {
+    grid-area: userCpfLabel;
+  }
+
+  &_value {
+    font-size: var(--body-font-size-2);
+    line-height: 1.781rem;
+    display: block;
+    text-align: right;
+    color: var(--primary-theme-color);
+  }
+
+  &_emailValue {
+    grid-area: userEmail;
+  }
+
+  &_cpfValue {
+    grid-area: userCpf;
+  }
+}
