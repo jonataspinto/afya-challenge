@@ -1,4 +1,5 @@
-import { HtmlHTMLAttributes, useCallback } from 'react';
+import { HtmlHTMLAttributes } from 'react';
+import { formatPlanCondition, formatPlanInstallment, formatPlanTitle, percentFormatter } from '@/utils/formatters';
 import styles from './availablePlanItem.module.scss';
 
 type PlanDTO = {
@@ -17,48 +18,6 @@ interface AvailablePlanItemProps extends HtmlHTMLAttributes<HTMLUListElement> {
 }
 
 export const AvailablePlanItem = ({ planData }: AvailablePlanItemProps) => {
-  const percentFormatter = useCallback((percentage: number) => {
-    const config = {
-      style: 'percent',
-      minimumFractionDigits: 0,
-      maximumFractionDigits: 0,
-    };
-
-    const { format } = Intl.NumberFormat('en-US', config);
-
-    return format(percentage);
-  }, []);
-
-  const formatTitle = useCallback(({ title, description }: PlanDTO) => {
-    return `${title} | ${description}`;
-  }, []);
-
-  const formatCondition = useCallback(
-    ({ fullPrice, discountAmmount }: PlanDTO) => {
-      const { format } = new Intl.NumberFormat('pt-BR', {
-        style: 'currency',
-        currency: 'BRL',
-      });
-
-      return `De ${format(fullPrice)} Por ${format(
-        fullPrice - discountAmmount,
-      )}`;
-    },
-    [],
-  );
-
-  const formatInstallment = useCallback(
-    ({ fullPrice, discountAmmount, installments }: PlanDTO) => {
-      const installment = fullPrice / installments;
-      const formattedInstallment = new Intl.NumberFormat('pt-BR', {
-        style: 'currency',
-        currency: 'BRL',
-      }).format(installment);
-
-      return `${installments}x de ${formattedInstallment}`;
-    },
-    [],
-  );
 
   return (
     <li
@@ -73,12 +32,12 @@ export const AvailablePlanItem = ({ planData }: AvailablePlanItemProps) => {
         aria-label={String(planData.id)}
       >
         <div className={styles.planDetails_group}>
-          <h3 className={styles.planDetails_title}>{formatTitle(planData)}</h3>
+          <h3 className={styles.planDetails_title}>{formatPlanTitle(planData)}</h3>
           <p className={styles.planDetails_condition}>
-            {formatCondition(planData)}
+            {formatPlanCondition(planData)}
           </p>
           <span className={styles.planDetails_installment}>
-            {formatInstallment(planData)}
+            {formatPlanInstallment(planData)}
           </span>
         </div>
         <span
