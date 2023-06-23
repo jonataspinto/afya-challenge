@@ -1,0 +1,32 @@
+.formField {
+  display: flex;
+  flex-direction: column;
+  gap: 0.4rem;
+
+  label {
+    font-size: var(--note-font-size);
+    font-weight: 400;
+    text-transform: capitalize;
+    color: var(--gray-4);
+    cursor: pointer;
+  }
+
+  input {
+    border: none;
+    background: transparent;
+    color: var(--black);
+    &::placeholder {
+      color: var(--gray-3);
+    }
+    &:focus,
+    &.focused {
+      outline: none;
+    }
+  }
+
+  border-bottom: solid 0.1rem var(--gray-1);
+}
+
+.hasError {
+  border-bottom: solid 0.1rem red;
+}
