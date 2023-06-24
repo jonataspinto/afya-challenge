@@ -1,18 +1,6 @@
 import { HtmlHTMLAttributes } from 'react';
 import { AvailablePlanItem } from './AvailablePlanItem';
 import styles from './availablePlans.module.scss';
-
-type PlanDTO = {
-  id: string | number;
-  title: string;
-  description: string;
-  order: number;
-  discountPercentage: number;
-  fullPrice: number;
-  discountAmmount: number;
-  installments: number;
-};
-
 interface AvailablePlansProps extends HtmlHTMLAttributes<HTMLUListElement> {
   plans: PlanDTO[];
 }

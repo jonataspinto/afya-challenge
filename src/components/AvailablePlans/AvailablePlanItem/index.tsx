@@ -1,24 +1,16 @@
 import { HtmlHTMLAttributes } from 'react';
-import { formatPlanCondition, formatPlanInstallment, formatPlanTitle, percentFormatter } from '@/utils/formatters';
+import {
+  formatPlanCondition,
+  formatPlanInstallment,
+  formatPlanTitle,
+  percentFormatter,
+} from '@/utils/formatters';
 import styles from './availablePlanItem.module.scss';
-
-type PlanDTO = {
-  id: string | number;
-  title: string;
-  description: string;
-  order: number;
-  discountPercentage: number;
-  fullPrice: number;
-  discountAmmount: number;
-  installments: number;
-};
-
 interface AvailablePlanItemProps extends HtmlHTMLAttributes<HTMLUListElement> {
   planData: PlanDTO;
 }
 
 export const AvailablePlanItem = ({ planData }: AvailablePlanItemProps) => {
-
   return (
     <li
       key={planData.id}
@@ -32,7 +24,9 @@ export const AvailablePlanItem = ({ planData }: AvailablePlanItemProps) => {
         aria-label={String(planData.id)}
       >
         <div className={styles.planDetails_group}>
-          <h3 className={styles.planDetails_title}>{formatPlanTitle(planData)}</h3>
+          <h3 className={styles.planDetails_title}>
+            {formatPlanTitle(planData)}
+          </h3>
           <p className={styles.planDetails_condition}>
             {formatPlanCondition(planData)}
           </p>
