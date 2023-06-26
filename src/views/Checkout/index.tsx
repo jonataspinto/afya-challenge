@@ -1,21 +1,31 @@
 'use client';
+import Head from 'next/head';
 import { useLang } from '@/contexts/langContext';
 import { PaymentForm } from '@/components/PaymentForm';
 import { EmailTag } from '@/components/EmailTag';
 import { Tooltip } from '@/components/Tooltip';
 import { CreditCards } from '@/components/CreditCards';
 import { AvailablePlans } from '@/components/AvailablePlans';
-import { availablePlansMock } from '@/mock/availablePlans';
 
-import styles from './page.module.scss';
+import styles from './checkoutView.module.scss';
 
-export const CheckoutView = () => {
+export type CheckoutViewProps = { plans: PlanDTO[] };
+
+export const CheckoutView = ({ plans }: CheckoutViewProps) => {
   const {
-    lang: { checkoutPage },
+    lang: { checkoutPage, app },
   } = useLang();
 
   return (
-    <>
+    <div className={styles.container}>
+      <Head>
+        <title>{`${checkoutPage.seo.title}${app.seo.title}`}</title>
+        <meta
+          key="description"
+          name="description"
+          content={checkoutPage.seo.description}
+        />
+      </Head>
       <section className={styles.paymentDataSection}>
         <div>
           <h2 className={styles.paymentDataSection_heading}>
@@ -39,9 +49,9 @@ export const CheckoutView = () => {
             className={styles.plansSection_tag}
           />
         </div>
-        <AvailablePlans plans={availablePlansMock} />
+        <AvailablePlans plans={plans} />
         <Tooltip label={checkoutPage.plansSection.info} />
       </section>
-    </>
+    </div>
   );
 };
