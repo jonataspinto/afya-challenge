@@ -39,10 +39,10 @@ export const formatPlanCondition = ({
 };
 
 export const formatPlanInstallment = (
-  { fullPrice, installments }: PlanDTO,
+  { fullPrice, discountAmmount, installments }: PlanDTO,
   style: 'clean' | 'large' = 'large',
 ) => {
-  const installment = fullPrice / installments;
+  const installment = (fullPrice - discountAmmount) / installments;
   const formattedInstallment = formatPlanPrice(installment);
 
   if (style === 'large') {

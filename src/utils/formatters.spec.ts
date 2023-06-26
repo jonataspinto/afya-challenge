@@ -53,7 +53,7 @@ describe('Specific use case formatters', () => {
     const planData = availablePlansMock[0];
 
     expect(formatPlanInstallment(planData)).toMatchInlineSnapshot(
-      `"12x de R$ 50,00"`,
+      `"12x de R$ 45,00"`,
     );
   });
 });
