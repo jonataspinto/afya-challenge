@@ -48,6 +48,8 @@ export const ptBR = {
   app: {
     seo: {
       title: ' | Whitebook',
+      description:
+        'Bem-vindo ao Whitebook: Acesso Ilimitado à Excelência Médica!',
     },
   },
   checkoutPage: {
@@ -81,4 +83,25 @@ export const ptBR = {
   },
   purchaseErrorMessage:
     'Desculpe, ocorreu um erro ao tentar processar sua compra. Por favor, tente novamente mais tarde.',
+  homePage: {
+    heading: 'Bem-vindo ao Whitebook: Acesso Ilimitado à Excelência Médica!',
+    subheading:
+      'Descubra a solução definitiva para todos os profissionais da área da saúde: o Whitebook. Nosso aplicativo de assinatura oferece acesso ilimitado a um vasto e abrangente conjunto de recursos médicos, projetado para capacitá-lo a entregar a excelência em seus cuidados diários aos pacientes.',
+    reasonsToChooseSection: {
+      heading: 'Por que escolher o Whitebook?',
+      reasons: [
+        'Conhecimento abrangente: O Whitebook reúne em um só lugar uma ampla gama de conteúdos médicos, desde diretrizes clínicas atualizadas, manuais de condutas, tabelas de medicamentos, até calculadoras e ferramentas interativas. Com nossa plataforma, você terá acesso a um vasto universo de informações essenciais para tomar decisões fundamentadas e oferecer o melhor tratamento possível.',
+        'Acesso offline: Sabemos que nem sempre é possível contar com uma conexão de internet estável, principalmente em ambientes hospitalares. Por isso, o Whitebook permite que você baixe o conteúdo necessário para acessá-lo mesmo quando estiver desconectado. Tenha a tranquilidade de saber que as informações cruciais estarão sempre à sua disposição, independentemente do local onde você esteja.',
+        'Atualizações em tempo real: A medicina está em constante evolução, e é crucial manter-se atualizado para oferecer o melhor cuidado aos pacientes. Com o Whitebook, você terá acesso a atualizações frequentes e em tempo real, garantindo que você esteja sempre informado sobre as últimas pesquisas, descobertas e avanços na área médica.',
+        'Facilidade de uso: Nossa plataforma foi projetada levando em consideração a usabilidade e a praticidade. Com uma interface intuitiva e amigável, você encontrará facilmente o conteúdo desejado, economizando tempo e maximizando sua eficiência no dia a dia.',
+        'Colaboração e compartilhamento: O Whitebook não é apenas uma ferramenta individual, mas também um espaço de colaboração. Compartilhe conhecimento, discuta casos clínicos, troque informações com colegas e crie uma rede de contatos profissionais que poderá enriquecer sua prática médica.',
+      ],
+      subheading:
+        'Não perca a oportunidade de se juntar à comunidade de médicos, enfermeiros, residentes e demais profissionais da saúde que já confiam no Whitebook para aprimorar sua prática clínica. Assine agora e tenha acesso ilimitado à excelência médica na palma da sua mão!',
+      seePlansCTA: {
+        label: 'Assine agora e ganhe um desconto especial!',
+        path: '/checkout',
+      },
+    },
+  },
 };
