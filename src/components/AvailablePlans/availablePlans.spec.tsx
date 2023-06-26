@@ -1,11 +1,17 @@
-import userEvent from '@testing-library/user-event';
 import { fireEvent, render, screen } from '@testing-library/react';
 import { availablePlansMock } from '@/mock/availablePlans';
 import { AvailablePlans } from '.';
 
+const setSelectedPlanMock = jest.fn();
+
 describe('AvailablePlans', () => {
   it('should render a list with available plans', async () => {
-    render(<AvailablePlans plans={availablePlansMock} />);
+    render(
+      <AvailablePlans
+        plans={availablePlansMock}
+        setSelectedPlanId={setSelectedPlanMock}
+      />,
+    );
 
     expect(screen.getByRole('list')).toBeInTheDocument();
 
@@ -31,7 +37,12 @@ describe('AvailablePlans', () => {
   });
 
   it('should highlight the selected plan', async () => {
-    render(<AvailablePlans plans={availablePlansMock} />);
+    render(
+      <AvailablePlans
+        plans={availablePlansMock}
+        setSelectedPlanId={setSelectedPlanMock}
+      />,
+    );
 
     const plan = screen.getByRole('radio', {
       name: String(availablePlansMock[0].id),
@@ -39,6 +50,6 @@ describe('AvailablePlans', () => {
 
     await fireEvent.click(plan);
 
-    expect(plan).toBeChecked();
+    expect(setSelectedPlanMock).toBeCalled();
   });
 });

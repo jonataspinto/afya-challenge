@@ -1,4 +1,10 @@
-import { HtmlHTMLAttributes } from 'react';
+import {
+  ChangeEvent,
+  Dispatch,
+  HtmlHTMLAttributes,
+  SetStateAction,
+  useCallback,
+} from 'react';
 import {
   formatPlanCondition,
   formatPlanInstallment,
@@ -8,9 +14,23 @@ import {
 import styles from './availablePlanItem.module.scss';
 interface AvailablePlanItemProps extends HtmlHTMLAttributes<HTMLUListElement> {
   planData: PlanDTO;
+  selectedPlanId?: string;
+  setSelectedPlanId: Dispatch<SetStateAction<string | undefined>>;
 }
 
-export const AvailablePlanItem = ({ planData }: AvailablePlanItemProps) => {
+export const AvailablePlanItem = ({
+  planData,
+  selectedPlanId,
+  setSelectedPlanId,
+}: AvailablePlanItemProps) => {
+  const handleSelectPlan = useCallback(
+    (event: ChangeEvent<HTMLInputElement>) => {
+      const { value } = event.target;
+      setSelectedPlanId(value);
+    },
+    [setSelectedPlanId],
+  );
+
   return (
     <li
       key={planData.id}
@@ -46,6 +66,8 @@ export const AvailablePlanItem = ({ planData }: AvailablePlanItemProps) => {
         name={String(planData.id)}
         value={String(planData.id)}
         id={String(planData.id)}
+        onChange={handleSelectPlan}
+        checked={selectedPlanId === String(planData.id)}
       />
     </li>
   );
