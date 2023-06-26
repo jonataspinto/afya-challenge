@@ -8,7 +8,7 @@ export default function MyApp({ Component, pageProps }: AppProps) {
   return (
     <LangProvider>
       <Toaster />
-      <NextNProgress color="#191847" />
+      <NextNProgress color="#f5850b" height={4} />
       <Component {...pageProps} />;
     </LangProvider>
   );
