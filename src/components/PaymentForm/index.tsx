@@ -44,9 +44,9 @@ export const PaymentForm = ({
               (
                 data,
                 index,
-              ): { istallmentValue: number; installmentLabel: string } => ({
+              ): { installmentValue: number; installmentLabel: string } => ({
                 ...data,
-                istallmentValue: index + 1,
+                installmentValue: index + 1,
                 installmentLabel: formatPlanInstallment({
                   ...selectedPlan,
                   installments: index + 1,
@@ -73,7 +73,7 @@ export const PaymentForm = ({
         type="number_format"
         maskKey="creditCardNumber"
         register={register('creditCardNumber', {
-          // required: true,
+          required: true,
         })}
         error={formState?.errors?.creditCardNumber}
       />
@@ -86,7 +86,7 @@ export const PaymentForm = ({
         type="number_format"
         maskKey="creditCardExpirationDate"
         register={register('creditCardExpirationDate', {
-          // required: true,
+          required: true,
         })}
         error={formState?.errors?.creditCardExpirationDate}
       />
@@ -99,7 +99,7 @@ export const PaymentForm = ({
         type="number_format"
         maskKey="creditCardCVV"
         register={register('creditCardCVV', {
-          // required: true,
+          required: true,
         })}
         error={formState?.errors?.creditCardCVV}
       />
@@ -111,7 +111,7 @@ export const PaymentForm = ({
         placeholder={lang.paymentForm.cardUserNameField.placeholder}
         type="text"
         register={register('creditCardHolder', {
-          // required: true,
+          required: true,
         })}
         error={formState?.errors?.creditCardHolder}
       />
@@ -124,7 +124,7 @@ export const PaymentForm = ({
         type="number_format"
         maskKey="creditCardCPF"
         register={register('creditCardCPF', {
-          // required: true,
+          required: true,
         })}
         error={formState?.errors?.creditCardCPF}
       />
@@ -150,13 +150,13 @@ export const PaymentForm = ({
           id={lang.paymentForm.installmentsNumberField.id}
           placeholder={lang.paymentForm.installmentsNumberField.placeholder}
           {...register('installments', {
-            // required: true,
+            required: true,
           })}
         >
           {installments?.map((installmentOption) => (
             <option
               key={installmentOption.installmentLabel}
-              value={installmentOption.istallmentValue}
+              value={installmentOption.installmentValue}
             >
               {installmentOption.installmentLabel}
             </option>
