@@ -1,5 +1,6 @@
 'use client';
 import Head from 'next/head';
+import { useCallback, useMemo, useState } from 'react';
 import { useLang } from '@/contexts/langContext';
 import { PaymentForm } from '@/components/PaymentForm';
 import { EmailTag } from '@/components/EmailTag';
@@ -15,6 +16,28 @@ export const CheckoutView = ({ plans }: CheckoutViewProps) => {
   const {
     lang: { checkoutPage, app },
   } = useLang();
+
+  const [selectedPlanId, setSelectedPlanId] = useState<string | undefined>(
+    undefined,
+  );
+
+  const selectedPlanData = useMemo(
+    () => plans?.find(({ id }) => id === Number(selectedPlanId)),
+    [plans, selectedPlanId],
+  );
+
+  const handleSubmit = useCallback(
+    (data: any) => {
+      const payload = {
+        ...data,
+        offerId: selectedPlanId,
+        gateway: 'iugu',
+      };
+
+      console.log('handleSubmit ~ payload:', { payload });
+    },
+    [selectedPlanId],
+  );
 
   return (
     <div className={styles.container}>
@@ -36,7 +59,7 @@ export const CheckoutView = ({ plans }: CheckoutViewProps) => {
           </p>
         </div>
         <CreditCards />
-        <PaymentForm onSubmit={() => {}} />
+        <PaymentForm onSubmit={handleSubmit} selectedPlan={selectedPlanData} />
       </section>
 
       <section className={styles.plansSection}>
@@ -49,7 +72,11 @@ export const CheckoutView = ({ plans }: CheckoutViewProps) => {
             className={styles.plansSection_tag}
           />
         </div>
-        <AvailablePlans plans={plans} />
+        <AvailablePlans
+          plans={plans}
+          selectedPlanId={selectedPlanId}
+          setSelectedPlanId={setSelectedPlanId}
+        />
         <Tooltip label={checkoutPage.plansSection.info} />
       </section>
     </div>
