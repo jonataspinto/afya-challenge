@@ -7,6 +7,7 @@
     'cardUserNameField cardUserNameField'
     'cardUserCpfField cardUserCpfField'
     'couponField couponField'
+    'installments installments'
     'submitButton submitButton';
   max-width: 33rem;
   column-gap: 4rem;
@@ -47,4 +48,33 @@
 .submitButton {
   grid-area: submitButton;
   width: 100%;
+}
+
+.installmentsField {
+  grid-area: installments;
+  display: flex;
+  flex-direction: column;
+  gap: 0.4rem;
+  border-bottom: solid 0.1rem var(--gray-1);
+
+  label {
+    font-size: var(--note-font-size);
+    font-weight: 400;
+    text-transform: capitalize;
+    color: var(--gray-4);
+    cursor: pointer;
+  }
+
+  select {
+    border: none;
+    background: transparent;
+    color: var(--black);
+    &::placeholder {
+      color: var(--gray-3);
+    }
+    &:focus,
+    &.focused {
+      outline: none;
+    }
+  }
 }
