@@ -1,8 +1,12 @@
 'use client';
+import { useMemo } from 'react';
 import { SubmitHandler, useForm } from 'react-hook-form';
 import { useLang } from '@/contexts/langContext';
+import { formatPlanInstallment } from '@/utils/formatters';
 import { Button } from '../Button';
 import { Input } from '../Input';
+
+import styles from './paymentForm.module.scss';
 
 type IFormInput = {
   couponCode?: string;
@@ -17,15 +21,39 @@ type IFormInput = {
   userId?: string;
 };
 
-import styles from './paymentForm.module.scss';
-
 type PaymentFormProps = {
   onSubmit: SubmitHandler<IFormInput>;
+  selectedPlan?: PlanDTO;
 };
 
-export const PaymentForm = ({ onSubmit, ...restProps }: PaymentFormProps) => {
+export const PaymentForm = ({
+  onSubmit,
+  selectedPlan,
+  ...restProps
+}: PaymentFormProps) => {
   const { lang } = useLang();
   const { register, handleSubmit, formState } = useForm<IFormInput>({});
+  const installments = useMemo(
+    () =>
+      selectedPlan
+        ? Array(selectedPlan?.installments)
+            .fill({ fullPrice: selectedPlan?.fullPrice })
+            .map(
+              (
+                data,
+                index,
+              ): { istallmentValue: number; installmentLabel: string } => ({
+                ...data,
+                istallmentValue: index + 1,
+                installmentLabel: formatPlanInstallment({
+                  ...selectedPlan,
+                  installments: index + 1,
+                }),
+              }),
+            )
+        : [],
+    [selectedPlan],
+  );
 
   return (
     <form
@@ -107,6 +135,32 @@ export const PaymentForm = ({ onSubmit, ...restProps }: PaymentFormProps) => {
         type="number_format"
         register={register('couponCode', {})}
       />
+
+      <div className={`${styles.formField} ${styles.installmentsField} }`}>
+        <label
+          htmlFor={lang.paymentForm.installmentsNumberField.id}
+          title={lang.paymentForm.installmentsNumberField.label}
+        >
+          {lang.paymentForm.installmentsNumberField.label}
+        </label>
+        <select
+          title={lang.paymentForm.installmentsNumberField.label}
+          id={lang.paymentForm.installmentsNumberField.id}
+          placeholder={lang.paymentForm.installmentsNumberField.placeholder}
+          {...register('installments', {
+            required: true,
+          })}
+        >
+          {installments?.map((installmentOption) => (
+            <option
+              key={installmentOption.installmentLabel}
+              value={installmentOption.istallmentValue}
+            >
+              {installmentOption.installmentLabel}
+            </option>
+          ))}
+        </select>
+      </div>
 
       <Button
         type="submit"

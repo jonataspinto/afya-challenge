@@ -14,7 +14,7 @@ export const QuestionMark = ({
     fill="none"
     xmlns="http://www.w3.org/2000/svg"
     aria-label={ariaLabel}
-    role="image"
+    role="img"
     {...restProps}
   >
     <title>{ariaLabel}</title>

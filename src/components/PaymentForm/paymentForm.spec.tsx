@@ -2,6 +2,7 @@ import userEvent from '@testing-library/user-event';
 import { fireEvent, render, screen, waitFor } from '@testing-library/react';
 import { PaymentForm } from '.';
 import { LangProvider, ptBR } from '@/contexts/langContext';
+import { availablePlansMock } from '@/mock/availablePlans';
 
 const mockUserData = {
   cardNumber: '0200 0000 4000 0000',
@@ -17,7 +18,7 @@ const handleSubmitMock = jest.fn();
 
 const renderPaymentForm = ({ handleSubmit }: { handleSubmit: () => void }) => (
   <LangProvider>
-    <PaymentForm onSubmit={handleSubmit} />
+    <PaymentForm onSubmit={handleSubmit} selectedPlan={availablePlansMock[0]} />
   </LangProvider>
 );
 

@@ -1,23 +1,35 @@
-import { HtmlHTMLAttributes } from 'react';
-import { formatPlanCondition, formatPlanInstallment, formatPlanTitle, percentFormatter } from '@/utils/formatters';
+import {
+  ChangeEvent,
+  Dispatch,
+  HtmlHTMLAttributes,
+  SetStateAction,
+  useCallback,
+} from 'react';
+import {
+  formatPlanCondition,
+  formatPlanInstallment,
+  formatPlanTitle,
+  percentFormatter,
+} from '@/utils/formatters';
 import styles from './availablePlanItem.module.scss';
-
-type PlanDTO = {
-  id: string | number;
-  title: string;
-  description: string;
-  order: number;
-  discountPercentage: number;
-  fullPrice: number;
-  discountAmmount: number;
-  installments: number;
-};
-
 interface AvailablePlanItemProps extends HtmlHTMLAttributes<HTMLUListElement> {
   planData: PlanDTO;
+  selectedPlanId?: string;
+  setSelectedPlanId: Dispatch<SetStateAction<string | undefined>>;
 }
 
-export const AvailablePlanItem = ({ planData }: AvailablePlanItemProps) => {
+export const AvailablePlanItem = ({
+  planData,
+  selectedPlanId,
+  setSelectedPlanId,
+}: AvailablePlanItemProps) => {
+  const handleSelectPlan = useCallback(
+    (event: ChangeEvent<HTMLInputElement>) => {
+      const { value } = event.target;
+      setSelectedPlanId(value);
+    },
+    [setSelectedPlanId],
+  );
 
   return (
     <li
@@ -32,7 +44,9 @@ export const AvailablePlanItem = ({ planData }: AvailablePlanItemProps) => {
         aria-label={String(planData.id)}
       >
         <div className={styles.planDetails_group}>
-          <h3 className={styles.planDetails_title}>{formatPlanTitle(planData)}</h3>
+          <h3 className={styles.planDetails_title}>
+            {formatPlanTitle(planData)}
+          </h3>
           <p className={styles.planDetails_condition}>
             {formatPlanCondition(planData)}
           </p>
@@ -52,6 +66,8 @@ export const AvailablePlanItem = ({ planData }: AvailablePlanItemProps) => {
         name={String(planData.id)}
         value={String(planData.id)}
         id={String(planData.id)}
+        onChange={handleSelectPlan}
+        checked={selectedPlanId === String(planData.id)}
       />
     </li>
   );
