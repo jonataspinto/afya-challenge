@@ -1,6 +1,8 @@
 'use client';
 import Link from 'next/link';
 import Head from 'next/head';
+import { useRouter } from 'next/router';
+import { useCallback } from 'react';
 import { useLang } from '@/contexts/langContext';
 import { CheckIcon } from '@/components/icons/CheckIcon';
 import { Button } from '@/components/Button';
@@ -14,6 +16,11 @@ export const ConfirmationView = () => {
   const {
     lang: { confirmationPage, app },
   } = useLang();
+  const router = useRouter();
+
+  const goToHome = useCallback(() => {
+    router.push(confirmationPage.goToHome.path);
+  }, [router, confirmationPage]);
 
   return (
     <main className={styles.container}>
@@ -44,7 +51,7 @@ export const ConfirmationView = () => {
         >
           {confirmationPage.manageSubscription.label}
         </Link>
-        <Button className={styles.actions_goToHome}>
+        <Button className={styles.actions_goToHome} onClick={goToHome}>
           {confirmationPage.goToHome.label}
         </Button>
       </footer>
