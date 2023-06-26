@@ -5,11 +5,7 @@ interface EmailTagProps extends LabelHTMLAttributes<HTMLLabelElement> {
   email: string;
 }
 
-export const EmailTag = ({
-  email,
-  className,
-  ...restProps
-}: EmailTagProps) => {
+export const EmailTag = ({ email, className, ...restProps }: EmailTagProps) => {
   return (
     <label
       className={`${styles.container} ${className ? className : ''}`}

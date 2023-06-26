@@ -3,7 +3,6 @@ import { fireEvent, render, screen } from '@testing-library/react';
 import { availablePlansMock } from '@/mock/availablePlans';
 import { AvailablePlans } from '.';
 
-
 describe('AvailablePlans', () => {
   it('should render a list with available plans', async () => {
     render(<AvailablePlans plans={availablePlansMock} />);
@@ -34,7 +33,9 @@ describe('AvailablePlans', () => {
   it('should highlight the selected plan', async () => {
     render(<AvailablePlans plans={availablePlansMock} />);
 
-    const plan = screen.getByRole('radio', { name: String(availablePlansMock[0].id) });
+    const plan = screen.getByRole('radio', {
+      name: String(availablePlansMock[0].id),
+    });
 
     await fireEvent.click(plan);
 
