@@ -24,11 +24,13 @@ type IFormInput = {
 type PaymentFormProps = {
   onSubmit: SubmitHandler<IFormInput>;
   selectedPlan?: PlanDTO;
+  isLoading?: boolean;
 };
 
 export const PaymentForm = ({
   onSubmit,
   selectedPlan,
+  isLoading,
   ...restProps
 }: PaymentFormProps) => {
   const { lang } = useLang();
@@ -71,7 +73,7 @@ export const PaymentForm = ({
         type="number_format"
         maskKey="creditCardNumber"
         register={register('creditCardNumber', {
-          required: true,
+          // required: true,
         })}
         error={formState?.errors?.creditCardNumber}
       />
@@ -84,7 +86,7 @@ export const PaymentForm = ({
         type="number_format"
         maskKey="creditCardExpirationDate"
         register={register('creditCardExpirationDate', {
-          required: true,
+          // required: true,
         })}
         error={formState?.errors?.creditCardExpirationDate}
       />
@@ -97,7 +99,7 @@ export const PaymentForm = ({
         type="number_format"
         maskKey="creditCardCVV"
         register={register('creditCardCVV', {
-          required: true,
+          // required: true,
         })}
         error={formState?.errors?.creditCardCVV}
       />
@@ -109,7 +111,7 @@ export const PaymentForm = ({
         placeholder={lang.paymentForm.cardUserNameField.placeholder}
         type="text"
         register={register('creditCardHolder', {
-          required: true,
+          // required: true,
         })}
         error={formState?.errors?.creditCardHolder}
       />
@@ -122,7 +124,7 @@ export const PaymentForm = ({
         type="number_format"
         maskKey="creditCardCPF"
         register={register('creditCardCPF', {
-          required: true,
+          // required: true,
         })}
         error={formState?.errors?.creditCardCPF}
       />
@@ -148,7 +150,7 @@ export const PaymentForm = ({
           id={lang.paymentForm.installmentsNumberField.id}
           placeholder={lang.paymentForm.installmentsNumberField.placeholder}
           {...register('installments', {
-            required: true,
+            // required: true,
           })}
         >
           {installments?.map((installmentOption) => (
@@ -165,9 +167,9 @@ export const PaymentForm = ({
       <Button
         type="submit"
         className={styles.submitButton}
-        disabled={!formState.isValid}
+        disabled={!formState.isValid || isLoading}
       >
-        {lang.paymentForm.submitButton.label}
+        {isLoading ? 'Enviando...' : lang.paymentForm.submitButton.label}
       </Button>
     </form>
   );

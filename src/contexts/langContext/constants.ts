@@ -79,4 +79,6 @@ export const ptBR = {
     },
     goToHome: { id: 'goToHome', label: 'ir para a home', path: '/' },
   },
+  purchaseErrorMessage:
+    'Desculpe, ocorreu um erro ao tentar processar sua compra. Por favor, tente novamente mais tarde.',
 };
