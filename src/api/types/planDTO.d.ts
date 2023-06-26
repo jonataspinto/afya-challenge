@@ -21,3 +21,7 @@ type PurchaseBody = {
   offerId: number;
   userId: number;
 };
+
+type PurchaseResponse = PurchaseBody & {
+  id: number;
+};

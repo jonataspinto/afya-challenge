@@ -24,11 +24,13 @@ type IFormInput = {
 type PaymentFormProps = {
   onSubmit: SubmitHandler<IFormInput>;
   selectedPlan?: PlanDTO;
+  isLoading?: boolean;
 };
 
 export const PaymentForm = ({
   onSubmit,
   selectedPlan,
+  isLoading,
   ...restProps
 }: PaymentFormProps) => {
   const { lang } = useLang();
@@ -42,9 +44,9 @@ export const PaymentForm = ({
               (
                 data,
                 index,
-              ): { istallmentValue: number; installmentLabel: string } => ({
+              ): { installmentValue: number; installmentLabel: string } => ({
                 ...data,
-                istallmentValue: index + 1,
+                installmentValue: index + 1,
                 installmentLabel: formatPlanInstallment({
                   ...selectedPlan,
                   installments: index + 1,
@@ -154,7 +156,7 @@ export const PaymentForm = ({
           {installments?.map((installmentOption) => (
             <option
               key={installmentOption.installmentLabel}
-              value={installmentOption.istallmentValue}
+              value={installmentOption.installmentValue}
             >
               {installmentOption.installmentLabel}
             </option>
@@ -165,9 +167,9 @@ export const PaymentForm = ({
       <Button
         type="submit"
         className={styles.submitButton}
-        disabled={!formState.isValid}
+        disabled={!formState.isValid || isLoading}
       >
-        {lang.paymentForm.submitButton.label}
+        {isLoading ? 'Enviando...' : lang.paymentForm.submitButton.label}
       </Button>
     </form>
   );

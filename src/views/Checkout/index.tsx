@@ -1,5 +1,7 @@
 'use client';
 import Head from 'next/head';
+import { toast } from 'react-hot-toast';
+import { useRouter } from 'next/router';
 import { useCallback, useMemo, useState } from 'react';
 import { useLang } from '@/contexts/langContext';
 import { PaymentForm } from '@/components/PaymentForm';
@@ -7,6 +9,7 @@ import { EmailTag } from '@/components/EmailTag';
 import { Tooltip } from '@/components/Tooltip';
 import { CreditCards } from '@/components/CreditCards';
 import { AvailablePlans } from '@/components/AvailablePlans';
+import { usePurchase } from '@/api/hooks/usePurchase';
 
 import styles from './checkoutView.module.scss';
 
@@ -14,7 +17,7 @@ export type CheckoutViewProps = { plans: PlanDTO[] };
 
 export const CheckoutView = ({ plans }: CheckoutViewProps) => {
   const {
-    lang: { checkoutPage, app },
+    lang: { checkoutPage, app, purchaseErrorMessage },
   } = useLang();
 
   const [selectedPlanId, setSelectedPlanId] = useState<string | undefined>(
@@ -26,17 +29,28 @@ export const CheckoutView = ({ plans }: CheckoutViewProps) => {
     [plans, selectedPlanId],
   );
 
+  const router = useRouter();
+
+  const { sendPurchaseOrder, state } = usePurchase({
+    onError: () => {
+      toast.error(purchaseErrorMessage);
+    },
+    onSuccess: () => {
+      router.push('/confirmation');
+    },
+  });
+
   const handleSubmit = useCallback(
-    (data: any) => {
+    async (data: any) => {
       const payload = {
         ...data,
         offerId: selectedPlanId,
         gateway: 'iugu',
       };
 
-      console.log('handleSubmit ~ payload:', { payload });
+      sendPurchaseOrder(payload);
     },
-    [selectedPlanId],
+    [selectedPlanId, sendPurchaseOrder],
   );
 
   return (
@@ -59,7 +73,11 @@ export const CheckoutView = ({ plans }: CheckoutViewProps) => {
           </p>
         </div>
         <CreditCards />
-        <PaymentForm onSubmit={handleSubmit} selectedPlan={selectedPlanData} />
+        <PaymentForm
+          onSubmit={handleSubmit}
+          selectedPlan={selectedPlanData}
+          isLoading={state?.status === 'loading'}
+        />
       </section>
 
       <section className={styles.plansSection}>

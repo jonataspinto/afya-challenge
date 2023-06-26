@@ -1,6 +1,6 @@
 import { render, screen } from '@testing-library/react';
 import { LangProvider, ptBR } from '@/contexts/langContext';
-import { ConfirmationView } from './ConfirmationView';
+import { ConfirmationView } from './index';
 
 describe('ConfirmationView', () => {
   it('should render Confirmation View', () => {
