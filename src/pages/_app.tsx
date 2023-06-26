@@ -5,13 +5,20 @@ import { LangProvider } from '@/contexts/langContext';
 import { Header } from '@/components/Header';
 
 import '@/styles/index.scss';
+import { useRouter } from 'next/router';
+import { useMemo } from 'react';
 
 export default function MyApp({ Component, pageProps }: AppProps) {
+  const router = useRouter();
+  const showGoBackButton = useMemo(
+    () => router.pathname !== '/',
+    [router.pathname],
+  );
   return (
     <LangProvider>
       <Toaster />
       <NextNProgress color="#f5850b" height={4} />
-      <Header />
+      <Header showGoBackButton={showGoBackButton} />
       <Component {...pageProps} />;
     </LangProvider>
   );
