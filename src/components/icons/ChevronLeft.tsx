@@ -1,10 +1,10 @@
-import { IconProps } from "./iconProps";
+import { IconProps } from './iconProps';
 
 export const ChevronLeft = ({
   ariaLabel,
-  height = "13",
-  width = "8",
-  fill = "#151516",
+  height = '13',
+  width = '8',
+  fill = '#151516',
   ...restProps
 }: IconProps) => {
   return (
@@ -15,7 +15,7 @@ export const ChevronLeft = ({
       fill="none"
       xmlns="http://www.w3.org/2000/svg"
       aria-label={ariaLabel}
-      role="image"
+      role="img"
       {...restProps}
     >
       <title>{ariaLabel}</title>

@@ -17,7 +17,12 @@ const creditCardLogoMapper = [
 ];
 
 interface CreditCardsProps extends HTMLAttributes<HTMLUListElement> {
-  selectedCard?: 'mastercard' | 'dinnersclub' |  'americanexpress'  | 'visa' | 'elo';
+  selectedCard?:
+    | 'mastercard'
+    | 'dinnersclub'
+    | 'americanexpress'
+    | 'visa'
+    | 'elo';
 }
 
 export const CreditCards = ({
@@ -32,7 +37,9 @@ export const CreditCards = ({
           <li
             key={key}
             title={key}
-            className={key === selectedCard ? `isSelected ${styles.isSelectedCard}` : ''}
+            className={
+              key === selectedCard ? `isSelected ${styles.isSelectedCard}` : ''
+            }
           >
             <Component />
           </li>
