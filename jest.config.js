@@ -9,5 +9,6 @@ module.exports = {
     '\\.(css|scss|less|jpg|png|svg)$': 'identity-obj-proxy',
     '@/(.*)': '<rootDir>/src/$1',
   },
-  coveragePathIgnorePatterns: ['<rootDir>/src/api/*'],
+  coveragePathIgnorePatterns: ['<rootDir>/src/api/*', '<rootDir>/src/pages/*'],
+  collectCoverageFrom: ['src/**/*.{js,jsx,ts,tsx}'],
 };
