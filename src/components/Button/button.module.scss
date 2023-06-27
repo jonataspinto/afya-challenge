@@ -13,7 +13,9 @@
   text-transform: capitalize;
   border-radius: 2.5rem;
   &:hover {
-    color: var(--gray-3);
+    background-color: var(--white);
+    color: var(--primary-theme-color);
+    border: 1px solid var(--primary-theme-color);
   }
 
   &:disabled {
