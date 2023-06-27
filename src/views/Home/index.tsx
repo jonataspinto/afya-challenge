@@ -28,6 +28,11 @@ export const HomeView = () => {
           name="description"
           content={app.seo.description}
         />
+        <link
+          rel="preload"
+          as="image"
+          href="https://whitebook.pebmed.com.br/images/bg-home.png)"
+        />
       </Head>
       <main className={styles.container}>
         <div className={styles.presentationSection}>

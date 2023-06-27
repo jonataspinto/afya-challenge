@@ -1,12 +1,37 @@
 .container {
   display: flex;
-  justify-content: center;
   gap: 6.4rem;
   margin: 0 auto;
   padding: 7.2rem 1.6rem 0;
   max-width: var(--container-max-width);
 
+  @media (min-width: 792px) {
+    background-image: url(https://whitebook.pebmed.com.br/images/bg-home.png);
+    background-position: bottom 400px right -32px;
+    background-repeat: no-repeat;
+    min-height: calc(100vh - 120px);
+    background-size: 300px;
+  }
+
+  @media (min-width: 880px) {
+    background-position: bottom 400px right -32px;
+    background-size: 400px;
+  }
+
+  @media (min-width: 993px) {
+    flex-direction: row-reverse;
+    background-position: bottom 30px right 0;
+    background-size: 640px;
+    justify-content: center;
+  }
+
+  @media (min-width: 1136px) {
+    background-position: bottom 0 right 0;
+    background-size: 700px;
+  }
+
   @media (max-width: 992px) {
+    flex-direction: column;
     gap: 2.4rem;
     padding: 0 1.5rem 1.5rem;
   }
