@@ -1,6 +1,6 @@
 'use client';
-import { useMemo } from 'react';
-import { SubmitHandler, useForm } from 'react-hook-form';
+import { FormEventHandler, useMemo } from 'react';
+import { FormState, UseFormRegister } from 'react-hook-form';
 import { useLang } from '@/contexts/langContext';
 import { formatPlanInstallment } from '@/utils/formatters';
 import { Button } from '../Button';
@@ -8,7 +8,7 @@ import { Input } from '../Input';
 
 import styles from './paymentForm.module.scss';
 
-type IFormInput = {
+export type IFormInput = {
   couponCode?: string;
   creditCardCPF: string;
   creditCardCVV: number;
@@ -22,19 +22,23 @@ type IFormInput = {
 };
 
 type PaymentFormProps = {
-  onSubmit: SubmitHandler<IFormInput>;
   selectedPlan?: PlanDTO;
   isLoading?: boolean;
+  register: UseFormRegister<IFormInput>;
+  onSubmit: FormEventHandler<HTMLFormElement>;
+  formState: FormState<IFormInput>;
 };
 
 export const PaymentForm = ({
   onSubmit,
   selectedPlan,
   isLoading,
+  register,
+  formState,
   ...restProps
 }: PaymentFormProps) => {
   const { lang } = useLang();
-  const { register, handleSubmit, formState } = useForm<IFormInput>({});
+
   const installments = useMemo(
     () =>
       selectedPlan
@@ -60,7 +64,7 @@ export const PaymentForm = ({
   return (
     <form
       {...restProps}
-      onSubmit={handleSubmit(onSubmit)}
+      onSubmit={onSubmit}
       name={lang.paymentForm.title}
       title={lang.paymentForm.title}
       className={styles.container}
@@ -167,7 +171,7 @@ export const PaymentForm = ({
       <Button
         type="submit"
         className={styles.submitButton}
-        disabled={!formState.isValid || isLoading}
+        disabled={!formState?.isValid || isLoading}
       >
         {isLoading ? 'Enviando...' : lang.paymentForm.submitButton.label}
       </Button>
