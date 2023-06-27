@@ -10,7 +10,7 @@ export const Tooltip = ({ label, className, ...restProps }: TooltipProps) => {
   return (
     <div
       role="tooltip"
-      className={`${styles.container} ${className ? className : ''}`}
+      className={`${styles.container} ${className}`}
       {...restProps}
     >
       {label} <QuestionMark />

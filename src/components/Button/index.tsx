@@ -5,8 +5,5 @@ export const Button = ({
   className,
   ...restProps
 }: ButtonHTMLAttributes<HTMLButtonElement>) => (
-  <button
-    {...restProps}
-    className={`${styles.container} ${className ? className : ''}`}
-  />
+  <button {...restProps} className={`${styles.container} ${className}`} />
 );

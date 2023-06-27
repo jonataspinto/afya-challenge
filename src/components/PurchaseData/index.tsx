@@ -44,10 +44,7 @@ export const PurchaseData = ({
   }
 
   return (
-    <div
-      {...restProps}
-      className={`${styles.container} ${className ? className : ''}`}
-    >
+    <div {...restProps} className={`${styles.container} ${className}`}>
       <div className={styles.contractedPlan}>
         <span className={styles.contractedPlan_starIcon}>
           <Star ariaLabel="star icon" />

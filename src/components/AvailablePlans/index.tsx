@@ -15,10 +15,7 @@ export const AvailablePlans = ({
   ...restProps
 }: AvailablePlansProps) => {
   return (
-    <ul
-      {...restProps}
-      className={`${styles.container} ${className ? className : ''}`}
-    >
+    <ul {...restProps} className={`${styles.container} ${className}`}>
       {plans?.map((planData) => (
         <AvailablePlanItem
           key={planData.id}

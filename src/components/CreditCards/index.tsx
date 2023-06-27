@@ -32,7 +32,10 @@ export const CreditCards = ({
   ...restProps
 }: CreditCardsProps) => {
   return (
-    <div className={`${styles.container} ${className ? className : ''}`}>
+    <div
+      className={`${styles.container} ${className}`}
+      data-testid="credit-cards-box"
+    >
       <ul {...restProps} className={styles.brandList}>
         {creditCardLogoMapper.map(({ key, Component }) => (
           <li
