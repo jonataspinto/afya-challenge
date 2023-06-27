@@ -1,7 +1,7 @@
 import { useRouter } from 'next/router';
 import { useCallback, useMemo, useState } from 'react';
 import { useDebounce } from 'usehooks-ts';
-import { useForm } from 'react-hook-form';
+import { SubmitHandler, useForm } from 'react-hook-form';
 import { toast } from 'react-hot-toast';
 import { yupResolver } from '@hookform/resolvers/yup';
 
@@ -10,13 +10,14 @@ import { IFormInput } from '@/components/PaymentForm';
 import { useLang } from '@/contexts/langContext';
 import { creditCardBrandMapper } from '@/utils/creditCard';
 import { paymentFormSchema } from '@/components/PaymentForm/schema';
+import { removeMasks } from '@/utils/removeMasks';
 
 export const useCheckoutView = ({ plans }: { plans: PlanDTO[] }) => {
   const router = useRouter();
   const { register, handleSubmit, formState, watch } = useForm<IFormInput>({
     // @ts-ignore
     resolver: yupResolver(paymentFormSchema),
-    mode: 'onChange',
+    mode: 'onBlur',
   });
 
   const [selectedPlanId, setSelectedPlanId] = useState<string | undefined>(
@@ -41,15 +42,18 @@ export const useCheckoutView = ({ plans }: { plans: PlanDTO[] }) => {
     },
   });
 
-  const onSubmit = useCallback(
-    async (data: any) => {
-      const payload = {
+  const onSubmit = useCallback<SubmitHandler<IFormInput>>(
+    async (data: IFormInput) => {
+      const payload: PurchaseBody = {
         ...data,
-        offerId: selectedPlanId,
+        offerId: Number(selectedPlanId),
         gateway: 'iugu',
+        userId: 1,
       };
 
-      sendPurchaseOrder(payload);
+      sendPurchaseOrder(
+        removeMasks(payload, ['.', '-', ' '], ['creditCardHolder']),
+      );
     },
     [selectedPlanId, sendPurchaseOrder],
   );
