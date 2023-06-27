@@ -1,6 +1,15 @@
+import userEvent from '@testing-library/user-event';
 import { render, screen } from '@testing-library/react';
 import { Header } from '.';
 import { LangProvider, ptBR } from '@/contexts/langContext';
+
+const mockBack = jest.fn().mockName('back');
+
+jest.mock('next/router', () => ({
+  useRouter: () => ({
+    back: mockBack,
+  }),
+}));
 
 describe('Header', () => {
   it('should render Header', async () => {
@@ -23,5 +32,9 @@ describe('Header', () => {
     expect(goBackButton).toBeInTheDocument();
     expect(goBackButtonIcon).toBeInTheDocument();
     expect(logo).toBeInTheDocument();
+
+    await userEvent.click(goBackButton);
+
+    expect(mockBack).toBeCalled();
   });
 });
