@@ -1,15 +1,12 @@
 'use client';
 import Head from 'next/head';
-import { toast } from 'react-hot-toast';
-import { useRouter } from 'next/router';
-import { useCallback, useMemo, useState } from 'react';
 import { useLang } from '@/contexts/langContext';
 import { PaymentForm } from '@/components/PaymentForm';
 import { EmailTag } from '@/components/EmailTag';
 import { Tooltip } from '@/components/Tooltip';
 import { CreditCards } from '@/components/CreditCards';
 import { AvailablePlans } from '@/components/AvailablePlans';
-import { usePurchase } from '@/api/hooks/usePurchase';
+import { useCheckoutView } from './useCheckoutView';
 
 import styles from './checkoutView.module.scss';
 
@@ -20,38 +17,17 @@ export const CheckoutView = ({ plans }: CheckoutViewProps) => {
     lang: { checkoutPage, app, purchaseErrorMessage },
   } = useLang();
 
-  const [selectedPlanId, setSelectedPlanId] = useState<string | undefined>(
-    undefined,
-  );
-
-  const selectedPlanData = useMemo(
-    () => plans?.find(({ id }) => id === Number(selectedPlanId)),
-    [plans, selectedPlanId],
-  );
-
-  const router = useRouter();
-
-  const { sendPurchaseOrder, state } = usePurchase({
-    onError: () => {
-      toast.error(purchaseErrorMessage);
-    },
-    onSuccess: () => {
-      router.push('/confirmation');
-    },
-  });
-
-  const handleSubmit = useCallback(
-    async (data: any) => {
-      const payload = {
-        ...data,
-        offerId: selectedPlanId,
-        gateway: 'iugu',
-      };
-
-      sendPurchaseOrder(payload);
-    },
-    [selectedPlanId, sendPurchaseOrder],
-  );
+  const {
+    selectedPlanId,
+    setSelectedPlanId,
+    selectedPlanData,
+    onSubmit,
+    register,
+    handleSubmit,
+    formState,
+    selectedCard,
+    state,
+  } = useCheckoutView({ plans });
 
   return (
     <div className={styles.container}>
@@ -72,9 +48,11 @@ export const CheckoutView = ({ plans }: CheckoutViewProps) => {
             {checkoutPage.paymentDataSection.description}
           </p>
         </div>
-        <CreditCards />
+        <CreditCards selectedCard={selectedCard?.brand} />
         <PaymentForm
-          onSubmit={handleSubmit}
+          onSubmit={handleSubmit(onSubmit)}
+          register={register}
+          formState={formState}
           selectedPlan={selectedPlanData}
           isLoading={state?.status === 'loading'}
         />
