@@ -76,9 +76,7 @@ export const PaymentForm = ({
         placeholder={lang.paymentForm.cardNumberField.placeholder}
         type="number_format"
         maskKey="creditCardNumber"
-        register={register('creditCardNumber', {
-          required: true,
-        })}
+        register={register('creditCardNumber')}
         error={formState?.errors?.creditCardNumber}
       />
 
@@ -89,9 +87,7 @@ export const PaymentForm = ({
         placeholder={lang.paymentForm.cardValidDateField.placeholder}
         type="number_format"
         maskKey="creditCardExpirationDate"
-        register={register('creditCardExpirationDate', {
-          required: true,
-        })}
+        register={register('creditCardExpirationDate')}
         error={formState?.errors?.creditCardExpirationDate}
       />
 
@@ -102,9 +98,7 @@ export const PaymentForm = ({
         placeholder={lang.paymentForm.cardCvvField.placeholder}
         type="number_format"
         maskKey="creditCardCVV"
-        register={register('creditCardCVV', {
-          required: true,
-        })}
+        register={register('creditCardCVV')}
         error={formState?.errors?.creditCardCVV}
       />
 
@@ -114,9 +108,7 @@ export const PaymentForm = ({
         label={lang.paymentForm.cardUserNameField.label}
         placeholder={lang.paymentForm.cardUserNameField.placeholder}
         type="text"
-        register={register('creditCardHolder', {
-          required: true,
-        })}
+        register={register('creditCardHolder')}
         error={formState?.errors?.creditCardHolder}
       />
 
@@ -127,9 +119,7 @@ export const PaymentForm = ({
         placeholder={lang.paymentForm.cardUserCpfField.placeholder}
         type="number_format"
         maskKey="creditCardCPF"
-        register={register('creditCardCPF', {
-          required: true,
-        })}
+        register={register('creditCardCPF')}
         error={formState?.errors?.creditCardCPF}
       />
 
@@ -153,9 +143,7 @@ export const PaymentForm = ({
           title={lang.paymentForm.installmentsNumberField.label}
           id={lang.paymentForm.installmentsNumberField.id}
           placeholder={lang.paymentForm.installmentsNumberField.placeholder}
-          {...register('installments', {
-            required: true,
-          })}
+          {...register('installments')}
         >
           {installments?.map((installmentOption) => (
             <option
