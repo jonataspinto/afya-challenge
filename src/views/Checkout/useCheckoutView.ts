@@ -3,14 +3,22 @@ import { useCallback, useMemo, useState } from 'react';
 import { useDebounce } from 'usehooks-ts';
 import { useForm } from 'react-hook-form';
 import { toast } from 'react-hot-toast';
+import { yupResolver } from '@hookform/resolvers/yup';
+
 import { usePurchase } from '@/api/hooks/usePurchase';
 import { IFormInput } from '@/components/PaymentForm';
 import { useLang } from '@/contexts/langContext';
 import { creditCardBrandMapper } from '@/utils/creditCard';
+import { paymentFormSchema } from '@/components/PaymentForm/schema';
 
 export const useCheckoutView = ({ plans }: { plans: PlanDTO[] }) => {
   const router = useRouter();
-  const { register, handleSubmit, formState, watch } = useForm<IFormInput>();
+  const { register, handleSubmit, formState, watch } = useForm<IFormInput>({
+    // @ts-ignore
+    resolver: yupResolver(paymentFormSchema),
+    mode: 'onChange',
+  });
+
   const [selectedPlanId, setSelectedPlanId] = useState<string | undefined>(
     undefined,
   );
