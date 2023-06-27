@@ -12,7 +12,7 @@ const payloadMock = {
 
 describe('removeMasks', () => {
   it('should remove masks of values', () => {
-    expect(removeMasks(payloadMock, ['creditCardHolder']))
+    expect(removeMasks(payloadMock, ['.', '-', ' '], ['creditCardHolder']))
       .toMatchInlineSnapshot(`
       {
         "couponCode": "",

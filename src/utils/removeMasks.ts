@@ -1,3 +1,5 @@
+import { object } from 'yup';
+
 export function regexReplaceAll(
   str: string = '',
   find: string[],
@@ -13,16 +15,20 @@ export function regexReplaceAll(
   return newStr;
 }
 
-export const removeMasks = (
-  data: Record<string, any>,
+export const removeMasks = <T = unknown>(
+  data: T,
+  maskSymbols: Array<string>,
   ignoreKeys: Array<string>,
 ) => {
-  const draft = Object.entries(data);
+  if (typeof data !== 'object') {
+    return data;
+  }
+  const draft = Object.entries(data as {});
 
-  return draft.reduce((previous, current) => {
+  return draft.reduce<T>((previous, current) => {
     const [key, value] = current;
 
-    if (ignoreKeys.includes(key)) {
+    if (ignoreKeys.includes(key) || typeof value !== 'string') {
       return {
         ...previous,
         [key]: value,
@@ -31,7 +37,7 @@ export const removeMasks = (
 
     return {
       ...previous,
-      [key]: regexReplaceAll(value, ['.', '-'], ''),
+      [key]: regexReplaceAll(value, maskSymbols, ''),
     };
-  }, {});
+  }, {} as T);
 };
