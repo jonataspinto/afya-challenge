@@ -7,7 +7,6 @@
   max-width: var(--container-max-width);
 
   @media (max-width: 992px) {
-    flex-direction: column;
     gap: 2.4rem;
     padding: 0 1.5rem 1.5rem;
   }
@@ -33,6 +32,10 @@
     text-align: start;
   }
 
+  h1 {
+    font-size: 3.2rem;
+  }
+
   h3 {
     font-size: var(--heading-size-3);
   }
@@ -54,6 +57,13 @@
     margin: 0 auto;
     margin: 1.6rem auto 0;
     text-transform: inherit;
+    background-color: var(--secondary-theme-color);
+    color: var(--white);
+    &:hover {
+      background-color: var(--white);
+      border: 1px solid var(--secondary-theme-color);
+      color: var(--secondary-theme-color);
+    }
   }
 }
 
