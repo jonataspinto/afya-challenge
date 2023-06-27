@@ -20,7 +20,7 @@ describe('removeMasks', () => {
         "creditCardCVV": "123",
         "creditCardExpirationDate": "12/12",
         "creditCardHolder": "Kent C. Dodds",
-        "creditCardNumber": "5162 3070 9082 6118",
+        "creditCardNumber": "5162307090826118",
         "installments": 1,
       }
     `);
