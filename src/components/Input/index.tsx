@@ -40,6 +40,7 @@ export const Input = ({
           id={id}
           placeholder={placeholder}
           type={type}
+          maskChar={null}
           {...restProps}
           {...register}
         />
