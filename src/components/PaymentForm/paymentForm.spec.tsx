@@ -21,8 +21,10 @@ const registerMock = jest.fn();
 
 const renderPaymentForm = ({
   handleSubmit,
+  isLoading = false,
 }: {
   handleSubmit: FormEventHandler<HTMLFormElement>;
+  isLoading?: boolean;
 }) => (
   <LangProvider>
     <PaymentForm
@@ -30,7 +32,7 @@ const renderPaymentForm = ({
       selectedPlan={availablePlansMock[0]}
       register={registerMock}
       formState={{ isValid: true } as FormState<IFormInput>}
-      isLoading={false}
+      isLoading={isLoading}
     />
   </LangProvider>
 );
@@ -96,5 +98,15 @@ describe('PaymentForm', () => {
     });
 
     expect(handleSubmitMock).toBeCalled();
+  });
+
+  it('should submit button with loading label', async () => {
+    render(
+      renderPaymentForm({ handleSubmit: handleSubmitMock, isLoading: true }),
+    );
+
+    const submitButton = screen.getByRole('button', {
+      name: /Enviando.../i,
+    });
   });
 });
