@@ -1,5 +1,6 @@
 import { render, screen } from '@testing-library/react';
 import { CreditCards } from '.';
+import { creditCardsName } from '@/utils/creditCard';
 
 const creditCardList = [
   'americanexpress',
@@ -11,7 +12,7 @@ const creditCardList = [
 
 describe('CreditCards', () => {
   it('should render a list of accepted credit cards', () => {
-    render(<CreditCards selectedCard="americanexpress" />);
+    render(<CreditCards selectedCard={creditCardsName.AMERICANEXPRESS} />);
 
     creditCardList.forEach((item) => {
       expect(
@@ -27,7 +28,7 @@ describe('CreditCards', () => {
   });
 
   it('should render an image from the payment provider', () => {
-    render(<CreditCards selectedCard="americanexpress" />);
+    render(<CreditCards selectedCard={creditCardsName.AMERICANEXPRESS} />);
 
     expect(
       screen.getByRole('img', {

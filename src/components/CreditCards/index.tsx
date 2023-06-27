@@ -5,24 +5,25 @@ import { Elo } from './Brands/Elo';
 import { Mastercard } from './Brands/Mastercard';
 import { Visa } from './Brands/Visa';
 import { IuguLogo } from './Brands/IuguLogo';
+import { creditCardsName } from '@/utils/creditCard';
 
 import styles from './creditCards.module.scss';
 
 const creditCardLogoMapper = [
-  { key: 'mastercard', Component: Mastercard },
-  { key: 'dinnersclub', Component: Dinnersclub },
-  { key: 'americanexpress', Component: Americanexpress },
-  { key: 'visa', Component: Visa },
-  { key: 'elo', Component: Elo },
+  { key: creditCardsName.MASTERCARD, Component: Mastercard },
+  { key: creditCardsName.DIBBERSCLUB, Component: Dinnersclub },
+  { key: creditCardsName.AMERICANEXPRESS, Component: Americanexpress },
+  { key: creditCardsName.VISA, Component: Visa },
+  { key: creditCardsName.ELO, Component: Elo },
 ];
 
 interface CreditCardsProps extends HTMLAttributes<HTMLUListElement> {
   selectedCard?:
-    | 'mastercard'
-    | 'dinnersclub'
-    | 'americanexpress'
-    | 'visa'
-    | 'elo';
+    | creditCardsName.MASTERCARD
+    | creditCardsName.DIBBERSCLUB
+    | creditCardsName.AMERICANEXPRESS
+    | creditCardsName.VISA
+    | creditCardsName.ELO;
 }
 
 export const CreditCards = ({
