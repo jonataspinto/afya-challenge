@@ -44,7 +44,9 @@ export const HomeView = () => {
           <h2>{homePage.reasonsToChooseSection.heading}</h2>
           <ol>
             {homePage.reasonsToChooseSection.reasons.map((text) => (
-              <li key={text}>{text}</li>
+              <li key={text} title={text}>
+                {text}
+              </li>
             ))}
           </ol>
         </aside>
