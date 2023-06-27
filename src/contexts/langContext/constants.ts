@@ -38,7 +38,7 @@ export const ptBR = {
     installmentsNumberField: {
       id: 'installmentsNumberField',
       label: 'número de parcelas',
-      placeholder: 'selecione',
+      placeholder: 'Selecione',
     },
     submitButton: {
       id: 'paymentFormSubmitButton',

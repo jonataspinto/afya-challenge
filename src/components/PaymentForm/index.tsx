@@ -145,6 +145,9 @@ export const PaymentForm = ({
           placeholder={lang.paymentForm.installmentsNumberField.placeholder}
           {...register('installments')}
         >
+          <option>
+            {lang.paymentForm.installmentsNumberField.placeholder}
+          </option>
           {installments?.map((installmentOption) => (
             <option
               key={installmentOption.installmentLabel}
