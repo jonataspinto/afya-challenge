@@ -84,7 +84,7 @@ export const ptBR = {
   purchaseErrorMessage:
     'Desculpe, ocorreu um erro ao tentar processar sua compra. Por favor, tente novamente mais tarde.',
   homePage: {
-    heading: 'Bem-vindo ao Whitebook: Acesso Ilimitado à Excelência Médica!',
+    heading: 'Bem-vindo ao Whitebook!',
     subheading:
       'Descubra a solução definitiva para todos os profissionais da área da saúde: o Whitebook. Nosso aplicativo de assinatura oferece acesso ilimitado a um vasto e abrangente conjunto de recursos médicos, projetado para capacitá-lo a entregar a excelência em seus cuidados diários aos pacientes.',
     reasonsToChooseSection: {
