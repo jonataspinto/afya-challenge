@@ -11,14 +11,13 @@ import styles from './paymentForm.module.scss';
 export type IFormInput = {
   couponCode?: string;
   creditCardCPF: string;
-  creditCardCVV: number;
+  creditCardCVV: string;
   creditCardExpirationDate: string;
   creditCardHolder: string;
-  creditCardNumber: number;
+  creditCardNumber: string;
   gateway?: string;
   installments: number;
-  offerId: string;
-  userId?: string;
+  offerId: number;
 };
 
 type PaymentFormProps = {
