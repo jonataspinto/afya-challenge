@@ -2,7 +2,10 @@
 
 >**Note**
 >
-> Qualquer alteração enviada para a branch `main` acionará o fluxo de deploy para https://afya-challenge-jon.netlify.app/.
+> - Qualquer alteração enviada para a branch `main` acionará o fluxo de deploy para https://afya-challenge-jon.netlify.app/.
+>
+> - Visite a página [Wiki](https://github.com/jonataspinto/afya-challenge/wiki) 
+
 ## Requisitos
 - nodeJS versão 18 ou mais recente
 
