@@ -2,47 +2,9 @@
 
 >**Note**
 >
-> - Qualquer alteração enviada para a branch `main` acionará o fluxo de deploy para https://afya-challenge-jon.netlify.app/.
->
 > - Visite a página [Wiki](https://github.com/jonataspinto/afya-challenge/wiki) 
 
-## Requisitos
-- nodeJS versão 18 ou mais recente
+- [Ao vivo](https://afya-challenge-jon.netlify.app/)
+- [Instruções para rodar o projeto](https://github.com/jonataspinto/afya-challenge/wiki/Instru%C3%A7%C3%B5es-para-rodar-o-projeto)
+- [Screenshots](https://github.com/jonataspinto/afya-challenge/wiki/%F0%9F%93%B7-Screenshots)
 
-----
-
-## Executar projeto em modo de desenvolvimento
-#### Instale as dependencias
-  ```bash
-    npm install
-  ```
-#### Inicie a aplicação
- ```bash
-    npm run dev
-  ```
-Abra [http://localhost:3000](http://localhost:3000) para visualizar no seu browser.
-
-----
-
-## Build para produção
-
-  ```bash
-    npm run build
-  ```
-#### executando aplicação pronta para produção  
-  ```bash
-    npm run start
-  ```
----
-## Executar testes
-  ```bash
-    npm run test
-  ```
-#### cobertura de testes (coverage)
-  ```bash
-    npm run test:coverage
-  ```
-#### modo watch
-  ```bash
-    npm run test:watch
-  ```
