@@ -5,6 +5,7 @@ import { Logo } from '@/components/icons/Logo';
 import { ChevronLeft } from '@/components/icons/ChevronLeft';
 import { useLang } from '@/contexts/langContext';
 import styles from './header.module.scss';
+import Link from 'next/link';
 
 type HeaderProps = {
   showGoBackButton?: boolean;
@@ -28,7 +29,9 @@ export const Header = ({ showGoBackButton = true }: HeaderProps) => {
           <ChevronLeft ariaLabel={`${lang.goToBackButtonLabel}: icon`} />
         </button>
       )}
-      <Logo ariaLabel={lang.logoAltText} />
+      <Link href={'/'} aria-label="go to home page" title="go to home page">
+        <Logo ariaLabel={lang.logoAltText} />
+      </Link>
     </header>
   );
 };
