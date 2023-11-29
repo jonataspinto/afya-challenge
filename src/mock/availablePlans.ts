@@ -1,6 +1,6 @@
 export const availablePlansMock = [
   {
-    id: 32,
+    id: 18,
     storeId: 'anual_parcelado_iugu',
     title: 'Premium Anual',
     description: 'Parcelado',
