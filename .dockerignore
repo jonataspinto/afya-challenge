@@ -1,0 +1,14 @@
+node_modules
+coverage
+.github
+.next
+.git
+.eslintrc.json
+.gitignore
+.nvmrc
+.prettierignore
+.prettier
+Dockerfile
+jest.config.js
+jest.setup.js
+README.md

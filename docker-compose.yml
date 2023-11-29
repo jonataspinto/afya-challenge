@@ -1,0 +1,14 @@
+version: '3'
+
+services:
+  whitebook:
+    container_name: whitebook-frontend
+    build:
+      context: .
+      dockerfile: Dockerfile.dev
+    volumes:
+      - ./src:/app/src
+      - ./public:/app/public
+    restart: always
+    ports:
+      - 3000:3000
