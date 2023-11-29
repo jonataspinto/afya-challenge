@@ -1,3 +1,5 @@
+@import '../../styles/breakpoints';
+
 .container {
   padding: 1.6rem 1.5rem 2.4rem;
   box-shadow: 0px 4px 20px 0px #0000000d;
@@ -7,7 +9,7 @@
   flex-direction: column;
   gap: 1.9rem;
 
-  @media (max-width: 992px) {
+  @media (max-width: $screen-m) {
     padding: 1.2rem;
   }
 }
@@ -21,14 +23,17 @@
   color: var(--primary-theme-color);
   font-weight: 400;
 
-  @media (max-width: 992px) {
+  @media (max-width: $screen-m) {
     padding: 0.8rem;
+    gap: 0.8rem;
   }
 
   &_starIcon {
     padding: 1.2rem;
     background-color: var(--gray-2);
     border-radius: 50%;
+    width: fit-content;
+    height: fit-content;
   }
 
   &_title {
@@ -48,11 +53,21 @@
 
 .userData {
   display: grid;
-  grid-template-columns: auto auto;
+  grid-template-columns: auto;
   grid-template-areas:
-    'userEmailLabel userEmail'
-    'userCpfLabel userCpf';
-  row-gap: 2.6rem;
+    'userEmailLabel'
+    'userEmail'
+    'userCpfLabel'
+    'userCpf';
+  row-gap: 1.4rem;
+
+  @media (min-width: calc($screen-xs - 201px)) {
+    grid-template-columns: auto auto;
+    grid-template-areas:
+      'userEmailLabel userEmail'
+      'userCpfLabel userCpf';
+    row-gap: 2.6rem;
+  }
 
   &_label {
     font-size: var(--body-font-size-2);
@@ -72,8 +87,13 @@
     font-size: var(--body-font-size-2);
     line-height: 1.781rem;
     display: block;
-    text-align: right;
+    text-align: left;
     color: var(--primary-theme-color);
+    word-break: break-word;
+
+    @media (min-width: calc($screen-xs - 201px)) {
+      text-align: right;
+    }
   }
 
   &_emailValue {
