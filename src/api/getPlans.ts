@@ -1,12 +1,8 @@
+import { HttpClient } from './clients/httpClient';
 import { pebMed } from './constants/urls';
-import { requester } from './requester';
 
 export const getPLans = async () => {
-  const response = await requester(`${pebMed}/offer`);
+  const requester = new HttpClient(pebMed);
 
-  if (!response.ok) {
-    throw new Error('Failed to fetch offers data');
-  }
-
-  return response.json() as unknown as PlanDTO[];
+  return requester.get<PlanDTO[]>('/offer');
 };

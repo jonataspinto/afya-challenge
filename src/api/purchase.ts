@@ -1,22 +1,14 @@
+import { HttpClient } from './clients/httpClient';
 import { pebMed } from './constants/urls';
-import { requester } from './requester';
 
 export const purchase = async (body: PurchaseBody) => {
-  const response = await requester(`${pebMed}/subscription`, body);
+  const requester = new HttpClient(pebMed);
 
-  if (!response.ok) {
-    throw new Error('Failed to fetch offers data');
-  }
-
-  return response.json() as unknown as PurchaseResponse;
+  return requester.post<PurchaseResponse>('/subscription', body);
 };
 
 export const getPurchaseData = async () => {
-  const response = await requester(`${pebMed}/subscription`);
+  const requester = new HttpClient(pebMed);
 
-  if (!response.ok) {
-    throw new Error('Failed to fetch offers data');
-  }
-
-  return response.json() as unknown as PurchaseResponse;
+  return requester.get<PurchaseResponse>('/subscription');
 };
