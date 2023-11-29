@@ -1,3 +1,5 @@
+@import '../../styles/breakpoints';
+
 .container {
   background-color: var(--bg-color-container);
   display: flex;
@@ -8,11 +10,11 @@
   max-width: var(--container-max-width);
   margin: 0 auto;
 
-  @media (max-width: 1280px) {
+  @media (max-width: calc($screen-l + 80px)) {
     padding: 7.2rem 16rem 0;
   }
 
-  @media (max-width: 992px) {
+  @media (max-width: $screen-m) {
     justify-content: space-between;
     padding-top: 3.2rem;
     flex-direction: column-reverse;

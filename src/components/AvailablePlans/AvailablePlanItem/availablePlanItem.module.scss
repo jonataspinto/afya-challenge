@@ -1,12 +1,19 @@
+@import '../../../styles/breakpoints';
+
 .container {
   border-radius: 1.5rem;
   border: 1px solid var(--primary-theme-color);
   padding: 2rem;
   display: flex;
+  flex-wrap: wrap;
   justify-content: space-between;
   gap: 5.7rem;
 
-  @media (max-width: 992px) {
+  @media (max-width: $screen-xs) {
+    gap: 1.6rem;
+  }
+
+  @media (max-width: $screen-m) {
     padding: 2rem 1.2rem;
   }
 
@@ -24,6 +31,7 @@
   font-weight: 400;
   color: var(--primary-theme-color);
   display: flex;
+  flex-wrap: wrap;
   gap: 1.2rem;
   align-items: center;
   cursor: pointer;
@@ -39,12 +47,10 @@
     font-size: var(--body-font-size-2);
     color: var(--primary-theme-color);
     line-height: 1.823rem;
-    white-space: nowrap;
   }
 
   &_condition {
     font-size: var(--note-font-size);
-    white-space: nowrap;
   }
 
   &_installment {
