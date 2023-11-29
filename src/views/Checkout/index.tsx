@@ -10,9 +10,7 @@ import { useCheckoutView } from './useCheckoutView';
 
 import styles from './checkoutView.module.scss';
 
-export type CheckoutViewProps = { plans: PlanDTO[] };
-
-export const CheckoutView = ({ plans }: CheckoutViewProps) => {
+export const CheckoutView = () => {
   const {
     lang: { checkoutPage, app, purchaseErrorMessage },
   } = useLang();
@@ -27,7 +25,7 @@ export const CheckoutView = ({ plans }: CheckoutViewProps) => {
     formState,
     selectedCard,
     state,
-  } = useCheckoutView({ plans });
+  } = useCheckoutView();
 
   return (
     <div className={styles.container}>
@@ -69,7 +67,6 @@ export const CheckoutView = ({ plans }: CheckoutViewProps) => {
           />
         </div>
         <AvailablePlans
-          plans={plans}
           selectedPlanId={selectedPlanId}
           setSelectedPlanId={setSelectedPlanId}
         />
