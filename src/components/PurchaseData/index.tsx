@@ -10,19 +10,7 @@ import { Star } from '../icons/Star';
 import styles from './purchaseData.module.scss';
 
 interface PurchaseDataProps extends HTMLAttributes<HTMLDivElement> {
-  purchase: {
-    couponCode?: string;
-    creditCardCPF: string;
-    creditCardCVV: string;
-    creditCardExpirationDate: string;
-    creditCardHolder: string;
-    creditCardNumber: string;
-    gateway: string;
-    installments: number;
-    offerId: number;
-    userId: number;
-    id: number;
-  };
+  purchase?: PurchaseResponse;
   userData: {
     email: string;
     cpf: string;
@@ -36,7 +24,7 @@ export const PurchaseData = ({
   ...restProps
 }: PurchaseDataProps) => {
   const contractedPlan = availablePlansMock.find(
-    ({ id }) => id === purchase.offerId,
+    ({ id }) => id === purchase?.offerId,
   );
 
   if (!contractedPlan) {

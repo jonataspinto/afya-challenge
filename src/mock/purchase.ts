@@ -6,7 +6,7 @@ export const purchaseDataMock = {
   creditCardNumber: '5555444433332222',
   gateway: 'iugu',
   installments: 1,
-  offerId: 32,
+  offerId: 18,
   userId: 1,
   id: 1,
 };

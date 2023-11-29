@@ -1,13 +1,12 @@
 import { render, screen } from '@testing-library/react';
 import { CheckoutView } from '.';
 import { LangProvider, ptBR } from '@/contexts/langContext';
-import { availablePlansMock } from '@/mock/availablePlans';
 
 describe('Checkout', () => {
   it('should render Checkout View', () => {
     render(
       <LangProvider>
-        <CheckoutView plans={availablePlansMock} />
+        <CheckoutView />
       </LangProvider>,
     );
 

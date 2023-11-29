@@ -11,8 +11,10 @@ import { useLang } from '@/contexts/langContext';
 import { creditCardBrandMapper } from '@/utils/creditCard';
 import { paymentFormSchema } from '@/components/PaymentForm/schema';
 import { removeMasks } from '@/utils/removeMasks';
+import { usePlansQuery } from '@/api/hooks/usePlansQuery';
 
-export const useCheckoutView = ({ plans }: { plans: PlanDTO[] }) => {
+export const useCheckoutView = () => {
+  const { data: plans } = usePlansQuery();
   const router = useRouter();
   const { register, handleSubmit, formState, watch } = useForm<IFormInput>({
     // @ts-ignore
