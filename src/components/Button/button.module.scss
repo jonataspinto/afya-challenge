@@ -1,3 +1,5 @@
+@import '../../styles/breakpoints';
+
 .container {
   background-color: var(--primary-theme-color);
   color: var(--white);
@@ -22,5 +24,9 @@
     background-color: var(--gray-2);
     color: var(--gray-4);
     cursor: not-allowed;
+  }
+
+  @media (max-width: calc($screen-xs - 100px)) {
+    padding: 1.8rem;
   }
 }
