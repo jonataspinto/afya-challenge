@@ -7,6 +7,7 @@
 
 .brandList {
   display: flex;
+  flex-wrap: wrap;
   gap: 1.311rem;
   list-style: none;
   li {
