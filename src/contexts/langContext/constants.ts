@@ -68,7 +68,7 @@ export const ptBR = {
   },
   confirmationPage: {
     seo: {
-      title: 'Compra realizada com sucesso',
+      title: 'Detalhes da compra',
       description:
         'Tudo certo! Sua assinatura foi realizada com sucesso, aproveite seu plano.',
     },
@@ -80,6 +80,10 @@ export const ptBR = {
       path: '/',
     },
     goToHome: { id: 'goToHome', label: 'ir para a home', path: '/' },
+    errorMessage: 'Não foi possível recuperar os dados da sua compra.',
+    errorTitle: 'Desculpe! ',
+    errorDescription:
+      'Desculpe, ocorreu um erro ao tentar recuperar os dados da sua compra. Por favor, tente novamente mais tarde.',
   },
   purchaseErrorMessage:
     'Desculpe, ocorreu um erro ao tentar processar sua compra. Por favor, tente novamente mais tarde.',
