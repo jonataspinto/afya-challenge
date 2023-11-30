@@ -6,7 +6,7 @@ import { Header } from '@/components/Header';
 
 import '@/styles/index.scss';
 import { useRouter } from 'next/router';
-import { useMemo, useState } from 'react';
+import { useMemo } from 'react';
 import {
   Hydrate,
   QueryClient,
@@ -21,7 +21,11 @@ export default function MyApp({ Component, pageProps }: AppProps) {
     [router.pathname],
   );
 
-  const [queryClient] = useState(() => new QueryClient());
+  const queryClient = new QueryClient();
+
+  queryClient.setDefaultOptions({
+    queries: { staleTime: 1000 * 60 * 60 },
+  });
 
   return (
     <QueryClientProvider client={queryClient}>

@@ -1,22 +1,26 @@
 import { GetServerSideProps } from 'next';
-import { getPlansServer } from '@/api/getPlans';
+import { getPurchaseDataServer } from '@/api/purchase';
 import { bootStrapReactQuery } from '@/api/clients/bootStrapReactQuery';
 import { QueriesKey } from '@/api/constants/queries';
 
-export { CheckoutView as default } from '@/views/Checkout';
+export { ConfirmationView as default } from '@/views/ConfirmationView';
 
 export const getServerSideProps: GetServerSideProps = async (pageContext) => {
+  const { params } = pageContext;
+  const id = params?.id;
   const { queryClient, addQueriesToPrefetch, getDehydratedState } =
     bootStrapReactQuery();
 
-  const prefetchPlans = () => {
-    return queryClient.prefetchQuery({
-      queryKey: [QueriesKey.plans],
-      queryFn: () => getPlansServer({ pageContext }),
-    });
-  };
+  if (id) {
+    const prefetchPurchaseData = () => {
+      return queryClient.prefetchQuery({
+        queryKey: [QueriesKey.purchase],
+        queryFn: () => getPurchaseDataServer({ id, pageContext }),
+      });
+    };
 
-  addQueriesToPrefetch(prefetchPlans);
+    addQueriesToPrefetch(prefetchPurchaseData);
+  }
 
   const dehydratedState = await getDehydratedState();
 
