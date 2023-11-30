@@ -1,8 +1,7 @@
 import { HttpClient } from './clients/httpClient';
-import { pebMed } from './constants/urls';
 
 export const getPLans = async () => {
-  const requester = new HttpClient(pebMed);
+  const requester = new HttpClient('/api');
 
   return requester.get<PlanDTO[]>('/offer');
 };
