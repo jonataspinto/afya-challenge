@@ -37,10 +37,14 @@ export const useCheckoutView = () => {
 
   const { sendPurchaseOrder, state } = usePurchase({
     onError: () => {
-      toast.error(purchaseErrorMessage);
+      toast.error(purchaseErrorMessage, {
+        position: 'bottom-center',
+        duration: 6000,
+        style: { fontSize: '1.6rem' },
+      });
     },
-    onSuccess: () => {
-      router.push('/confirmation');
+    onSuccess: (data) => {
+      router.push(`/confirmation/${data.id}`);
     },
   });
 
