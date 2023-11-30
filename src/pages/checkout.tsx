@@ -1,18 +1,18 @@
 import { GetServerSideProps } from 'next';
-import { getPLans } from '@/api/getPlans';
+import { getPlansServer } from '@/api/getPlans';
 import { bootStrapReactQuery } from '@/api/clients/bootStrapReactQuery';
 import { QueriesKey } from '@/api/constants/queries';
 
 export { CheckoutView as default } from '@/views/Checkout';
 
-export const getServerSideProps: GetServerSideProps = async () => {
+export const getServerSideProps: GetServerSideProps = async (pageContext) => {
   const { queryClient, addQueriesToPrefetch, getDehydratedState } =
     bootStrapReactQuery();
 
   const prefetchPlans = () => {
     return queryClient.prefetchQuery({
       queryKey: [QueriesKey.plans],
-      queryFn: getPLans,
+      queryFn: () => getPlansServer({ pageContext }),
     });
   };
 
