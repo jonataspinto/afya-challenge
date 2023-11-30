@@ -10,7 +10,8 @@
     "test": "jest",
     "test:watch": "jest --watchAll",
     "test:coverage": "jest --coverage",
-    "test:clear": "jest --clearCache"
+    "test:clear": "jest --clearCache",
+    "test:cypress": "cypress run"
   },
   "dependencies": {
     "@hookform/resolvers": "^3.1.1",
@@ -40,6 +41,7 @@
     "@testing-library/user-event": "^14.4.3",
     "@types/react-input-mask": "^3.0.2",
     "babel-jest": "^29.5.0",
+    "cypress": "^13.6.0",
     "eslint-config-prettier": "^8.8.0",
     "eslint-plugin-prettier": "^4.2.1",
     "identity-obj-proxy": "^3.0.0",
