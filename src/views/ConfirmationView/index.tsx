@@ -17,12 +17,13 @@ export const ConfirmationView = () => {
     lang: { confirmationPage, app },
   } = useLang();
   const router = useRouter();
+  const { id } = router.query;
 
   const goToHome = useCallback(() => {
     router.push(confirmationPage.goToHome.path);
   }, [router, confirmationPage]);
 
-  const { data: purchase } = usePurchaseQuery();
+  const { data: purchase } = usePurchaseQuery(id as string);
 
   return (
     <main className={styles.container}>
